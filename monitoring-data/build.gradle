@@ -1,0 +1,101 @@
+import java.lang.invoke.LambdaForm.Compiled;
+import java.sql.DriverManager
+
+apply from: "$rootDir/java.gradle"
+apply plugin: 'org.flywaydb.flyway'
+
+buildscript {
+	repositories repos
+
+	dependencies {
+		classpath libs.flyway
+		classpath libs.oracle
+	}
+}
+
+configurations { driver }
+
+dependencies {
+	compile libs.commonsDbUtils
+	compile libs.commonsLang
+	compile libs.elasticsearch
+	compile libs.flyway
+	compile libs.guava
+	compile libs.h2
+	compile libs.hikari
+	compile libs.logback
+	compile libs.querydslSql
+
+	runtime libs.oracle
+
+	// @see comment in the querydsl task
+	driver libs.oracle
+	driver libs.xdb6
+}
+
+// Variables
+def dbUrlCavos = 'jdbc:oracle:thin:@cavos.ergon.ch:1521:CAVOS'
+
+// For convenience we define some maven like profiles.
+// Usage: gradlew -Dprofile=ZEBRA_M_1 flywayMigrate
+
+if (System.properties.profile == 'ZEBRA_M_1') {
+	flyway {
+		url = "${dbUrlCavos}"
+		user = 'ZEBRA_M_1'
+		password ='password'
+		locations =['classpath:/db/migration/oracle']
+	}
+}
+
+if (System.properties.profile == 'ZEBRA_M') {
+	flyway {
+		url = "${dbUrlCavos}"
+		user = 'ZEBRA_M'
+		password ='password'
+		locations =['classpath:/db/migration/oracle']
+	}
+}
+
+task querydsl << {
+	def querydslPackage = 'ch.ergon.zebra.monitoring.data.querydsl'
+	def querydslTargetDir = "${projectDir}/src/main/java/"
+
+	// Remove all generated sources
+	def generatedSourcesDir = new File(querydslTargetDir + querydslPackage.replaceAll("\\.", "/"))
+	if (generatedSourcesDir.exists()) {
+		generatedSourcesDir.deleteDir()
+	}
+
+	// We need to add the driver to the groovy classloader explicitely:
+	// https://discuss.gradle.org/t/why-this-tasks-fails-on-classnotfoundexception/6551
+	// https://discuss.gradle.org/t/jdbc-driver-class-cannot-be-loaded-with-gradle-2-0-but-worked-with-1-12/2277/5
+	URLClassLoader loader =GroovyObject.class.classLoader
+	configurations.driver.each {File file ->
+		loader.addURL(file.toURI().toURL())
+	}
+	DriverManager.registerDriver(loader.loadClass('oracle.jdbc.OracleDriver').newInstance())
+
+	// Properties that are the same for all tables
+	def configuration = [
+		dbUrl : "${dbUrlCavos}",
+		// For generating source code we always use the development schema
+		dbUserName : "ZEBRA_M_1",
+		dbPassword : "password",
+		targetSourceFolder : querydslTargetDir,
+		beanTargetPackage : querydslPackage + '.domain',
+		targetPackage : querydslPackage + '.metadata',
+		exportBeans : 'true'
+	]
+
+	// Generate code for measurement tables
+	def generator1 = new ch.ergon.zebra.monitoring.codegen.QuerydslCodeGenerator(configuration)
+	generator1.tableNamePattern = 'PROFILING, CPU_USAGE, MEMORY_USAGE'
+	generator1.beanInterfaces = ['ch.ergon.zebra.monitoring.data.measurement.Measurement']
+	generator1.execute()
+
+	// Generate code for other tables
+	def generator2 = new ch.ergon.zebra.monitoring.codegen.QuerydslCodeGenerator(configuration)
+	generator2.tableNamePattern = 'IMPORTED_FILE'
+	generator2.execute()
+}

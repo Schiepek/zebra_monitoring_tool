@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ch.ergon.zebra.monitoring.service.file.ExistingRecordTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2015-05-29T08:09:32" hostname="SESA" time="0.003">
+  <properties/>
+  <testcase name="testImportExistingRecord" classname="ch.ergon.zebra.monitoring.service.file.ExistingRecordTest" time="0.003"/>
+  <system-out><![CDATA[10:09:32.586 [Test worker] INFO  c.e.z.m.service.cpu.CpuUsageService -   Processing source: PathSource [name=sample_cpu_usage.log]
+10:09:32.587 [Test worker] INFO  c.e.z.m.service.cpu.CpuUsageService -   Processing source: PathSource [name=sample_cpu_usage.log]
+10:09:32.589 [Test worker] INFO  c.e.z.m.s.c.CpuUsageInstanceHandler - Skipping duplicate: client=testClient, environment=testEnvironment, sysDatetime=2015-03-12 10:09:46.0, hash=8cf3077c723dfe5761a814e2d5a39c28458b18c989ce8188bf85e7f56fdfd5a1
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

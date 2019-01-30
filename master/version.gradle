@@ -1,0 +1,62 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+ext.calculateVersion = {
+	def latestTagDistance = getLatestTagDistance();
+	if (latestTagDistance == 0) {
+		def latestTag = getLatestTag();
+		if (latestTag.startsWith("monitoring_")) {
+			// Version is tagged with a monitoring-x.y.z version.
+			// Return the version without the monitoring prefix
+			return latestTag.substring(latestTag.indexOf('_') + 1);
+		}
+	}
+
+	// Snapshot version: Use branch name
+	return 'SNAPSHOT';
+}
+
+def getLatestTagDistance() {
+	def result = executeHg("latesttagdistance");
+	return result.toInteger();
+}
+
+def getLatestTag() {
+	def result = executeHg("latesttag");
+	return result;
+}
+
+def executeHg(template) {
+	def command = "hg log -r '.' --template {$template}";
+
+	def out = new ByteArrayOutputStream();
+	def err = new ByteArrayOutputStream();
+	def execResult;
+
+	if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+		execResult = exec {
+			commandLine 'cmd', '/c', command
+			standardOutput = out
+			errorOutput = err
+		}
+	} else {
+		execResult = exec {
+			commandLine 'sh', '-c', command
+			standardOutput = out
+			errorOutput = err
+		}
+	}
+
+	if (execResult.exitValue != 0) {
+		// Something went wrong
+		logger.quiet "Failed to execute hg command"
+		logger.quiet "Command: $command"
+		logger.quiet "Return code: $execResult"
+		logger.quite "Error: " + err.toString();
+
+		throw new GradleException('Executing hg command failed')
+	}
+
+	def result = out.toString()
+	// logger.quiet "Result: $result"
+	return result;
+}

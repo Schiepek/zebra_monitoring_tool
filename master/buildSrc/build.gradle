@@ -1,0 +1,29 @@
+buildscript {
+	ext {
+		// Define symbolic dependency versions.
+		versions = [
+			querydsl: '3.6.1'
+		]
+
+		// Define symbolic names for dependencies.
+		libs = [
+			querydslSqlCodegen: "com.mysema.querydsl:querydsl-sql-codegen:${versions.querydsl}"
+		]
+
+		repos = {
+			maven { url 'http://nexus.ergon.ch/content/groups/public' }
+			maven { url 'http://nexus.ergon.ch/content/groups/public-snapshots/' }
+		}
+	}
+
+	repositories ext.repos
+}
+
+apply plugin: 'groovy'
+
+repositories repos
+
+dependencies {
+	compile localGroovy()
+	compile libs.querydslSqlCodegen
+}

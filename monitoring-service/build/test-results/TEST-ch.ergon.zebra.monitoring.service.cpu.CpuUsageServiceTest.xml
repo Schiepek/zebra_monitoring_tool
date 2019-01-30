@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ch.ergon.zebra.monitoring.service.cpu.CpuUsageServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2015-05-29T08:09:32" hostname="SESA" time="0.027">
+  <properties/>
+  <testcase name="testCpuUsageImport" classname="ch.ergon.zebra.monitoring.service.cpu.CpuUsageServiceTest" time="0.027"/>
+  <system-out><![CDATA[10:09:32.563 [Test worker] INFO  c.e.z.m.service.cpu.CpuUsageService -   Processing source: PathSource [name=sample_cpu_usage.log]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

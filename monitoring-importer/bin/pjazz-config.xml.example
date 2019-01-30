@@ -1,0 +1,19 @@
+<config>
+	<client>Coop</client>
+    <environment>pjazz</environment>
+	<database>
+		<jdbcUrl>jdbc:oracle:thin:@cavos.ergon.ch:1521:CAVOS</jdbcUrl>
+		<jdbcDriver>oracle.jdbc.driver.OracleDriver</jdbcDriver>
+		<username>ZEBRA_M_1</username>
+		<password>password</password>
+	</database>
+	<es>
+		<cluster>Zebra</cluster>
+		<index>coop_pjazz</index>
+		<host>192.168.59.103</host>
+		<port>9300</port>
+	</es>
+	<importer name="profiling" pending="C:/Users/mmeyer/Desktop/Monitoring/profiling/pending" done="C:/Users/mmeyer/Desktop/Monitoring/profiling/done" failed="C:/Users/mmeyer/Desktop/Monitoring/profiling/failed"/>
+	<importer name="cpu" pending="C:/Users/mmeyer/Desktop/Monitoring/cpu/pending" done="C:/Users/mmeyer/Desktop/Monitoring/cpu/done" failed="C:/Users/mmeyer/Desktop/Monitoring/cpu/failed"/>
+	<importer name="memory" pending="C:/Users/mmeyer/Desktop/Monitoring/memory/pending" done="C:/Users/mmeyer/Desktop/Monitoring/memory/done" failed="C:/Users/mmeyer/Desktop/Monitoring/memory/failed"/>
+</config>

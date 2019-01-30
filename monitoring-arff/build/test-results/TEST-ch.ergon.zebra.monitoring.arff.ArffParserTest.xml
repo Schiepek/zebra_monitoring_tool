@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ch.ergon.zebra.monitoring.arff.ArffParserTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2015-05-29T08:09:16" hostname="SESA" time="0.088">
+  <properties/>
+  <testcase name="testParseInstancesWithWrongNumberOfAttributes" classname="ch.ergon.zebra.monitoring.arff.ArffParserTest" time="0.073"/>
+  <testcase name="testMetadata" classname="ch.ergon.zebra.monitoring.arff.ArffParserTest" time="0.005"/>
+  <testcase name="testParseInstances" classname="ch.ergon.zebra.monitoring.arff.ArffParserTest" time="0.01"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

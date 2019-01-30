@@ -1,0 +1,10 @@
+path:
+  data: /data/data
+  logs: /data/log
+  work: /data/work
+  plugins: /opt/elasticsearch/plugins
+  
+cluster:
+  name: Zebra
+  
+bootstrap.mlockall: true

@@ -1,0 +1,17 @@
+{
+    "cpu_usage" : {
+        "properties" : {
+            "id" : {
+            	"type" : "integer",
+				"index" : "not_analyzed"
+			},
+			"sysDatetime" : {
+            	"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"cpuUsage" : {
+            	"type" : "double"
+			}
+        }
+    }
+}

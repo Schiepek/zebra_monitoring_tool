@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ch.ergon.zebra.monitoring.service.version.VersionServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2015-05-29T08:09:32" hostname="SESA" time="0.005">
+  <properties/>
+  <testcase name="testVersion" classname="ch.ergon.zebra.monitoring.service.version.VersionServiceTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

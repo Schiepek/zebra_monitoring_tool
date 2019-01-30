@@ -1,0 +1,22 @@
+<config>
+	<client>testClient</client>
+	<environment>testEnvironment</environment>
+	<es>
+		<cluster>testCluster</cluster>
+		<index>testIndex</index>
+		<host>111.222.333.444</host>
+		<port>1234</port>
+	</es>
+	<database>
+		<jdbcUrl>testJdbcUrl</jdbcUrl>
+		<jdbcDriver>oracle.jdbc.driver.OracleDriver</jdbcDriver>
+		<username>testUsername</username>
+		<password>testPassword</password>
+	</database>
+		<importer name="testImporterA" pending="/etc/monitoring/pending"
+		done="/etc/monitoring/done"
+		failed="/etc/monitoring/failed"  />
+	<importer name="testImporterB" pending="/etc/monitoring/pending"
+		done="/etc/monitoring/done"
+		failed="/etc/monitoring/failed" />
+</config>

@@ -1,0 +1,96 @@
+@RELATION UseCaseProfiler
+@ATTRIBUTE useCaseId {doLogin,kostenstellenWechsel,pepDetailAnsicht-mainForm:speichern,pepDetailAnsicht-mainForm:insertZeitart,pepDetailAnsicht-mainForm:deleteGeplanteZeit,pepDetailAnsicht-mainForm:clickMitarbeiter,pepDetailAnsicht-mainForm:enableKassenplanung,pepDetailAnsicht-mainForm:disableKassenplanung,zeDetailAnsicht-mainForm:saveButton,pageReload-pepWochenAnsicht,pageReload-pepTagesAnsicht,pageReload-pepDetailAnsicht,pageReload-pepAbsenzenplanung,pageReload-pepSchichtplanung,pageReload-zeWochenAnsicht,pageReload-zeDetailAnsicht,index-focusDateChange,pepWochenAnsicht-focusDateChange,pepDetailAnsicht-focusDateChange,pepTagesAnsicht-focusDateChange,pepAbsenzenplanung-focusDateChange,pepSchichtplanung-focusDateChange,zeWochenAnsicht-focusDateChange,zeDetailAnsicht-focusDateChange,CopyTagesDatenOnWochenplan,InsertAbsenz,DeleteTagesdatenOnAbsenzplanung,InsertAbsenzPeriodically,CopyTagesdatenOnSchichtplanung,DeleteTagesdatenOnSchichtplanung,InsertSchicht,InsertSchichtPeriodically,InsertAbsenzOnSchichtplanung,InsertAbsenzPeriodicallyOnSchichtplanung,InsertWochenSchicht,InsertWochenSchichtPeriodically,mitarbeiterZuteilen,initialPageLoad-index,initialPageLoad-pepWochenAnsicht,initialPageLoad-pepAbsenzenplanung,initialPageLoad-pepTagesAnsicht,initialPageLoad-pepDetailAnsicht,initialPageLoad-pepSchichtplanung,initialPageLoad-zeWochenAnsicht,initialPageLoad-zeDetailAnsicht,DeleteTagesdatenOnFerienplanung,InsertFerien,InsertFerienPeriodically,SelektierteMitarbeiter,ToggleFerienbewilligung,UpdateSollManuell,FerienplanungMitarbeiterTooltip}
+@ATTRIBUTE serverExecutionTimeMs numeric
+@ATTRIBUTE serverOverheadTimeMs numeric
+@ATTRIBUTE requestId numeric
+@ATTRIBUTE sessionId string
+@ATTRIBUTE sessionAgeInMinutes numeric
+@ATTRIBUTE userAgent string
+@ATTRIBUTE host string
+@ATTRIBUTE useCaseExpectsNavigationTime string
+@ATTRIBUTE mandant {0001}
+@ATTRIBUTE loginName string
+@ATTRIBUTE focusDate date "dd.MM.yyyy"
+@ATTRIBUTE focusDateMinusSystemDate numeric
+@ATTRIBUTE focusKstNummer string
+@ATTRIBUTE focusKstNrOfMitarbeiter numeric
+@ATTRIBUTE nrOfAccessibleKostenstelle numeric
+@ATTRIBUTE limitPeeNummer string
+@ATTRIBUTE sysdatetime date "dd.MM.yyyy HH:mm:ss"
+@ATTRIBUTE sysdate date "dd.MM.yyyy"
+@ATTRIBUTE systime date "HH:mm:ss"
+@ATTRIBUTE weekday date "EE"
+@ATTRIBUTE zeitartNummer string
+@ATTRIBUTE minActionDate date "dd.MM.yyyy"
+@ATTRIBUTE maxActionDate date "dd.MM.yyyy"
+@ATTRIBUTE minActionDateMinusSystemDays numeric
+@ATTRIBUTE maxActionDateMinusSystemDays numeric
+@ATTRIBUTE actionDateIntevalDays numeric
+@ATTRIBUTE bwDauerMs numeric
+@ATTRIBUTE bwMode {STRICTLY_NON_VIRTUAL,VIRTUAL_ALLOWED,FORCED_VIRTUAL}
+@ATTRIBUTE planungenGenerierenTage numeric
+@ATTRIBUTE planungenGenerierenDauerMs numeric
+@ATTRIBUTE sollGleichIstTage numeric
+@ATTRIBUTE sollGleichIstDauerMs numeric
+@ATTRIBUTE buchungslaufTage numeric
+@ATTRIBUTE buchungslaufDauerMs numeric
+@ATTRIBUTE kontolaufTage numeric
+@ATTRIBUTE kontolaufDauerMs numeric
+@ATTRIBUTE kontolaufIterationen numeric
+@ATTRIBUTE planungenNeurechnenTage numeric
+@ATTRIBUTE planungenNeurechnenDauerMs numeric
+@ATTRIBUTE forcePlanungNeurechnen string
+@ATTRIBUTE zeitartRegelEnforcementAnzahl numeric
+@ATTRIBUTE zeitartRegelEnforcementDauerMs numeric
+@ATTRIBUTE wocheNeuRechnenAnzahl numeric
+@ATTRIBUTE wocheNeuRechnenDauerMs numeric
+@ATTRIBUTE systemCPULoad numeric
+@ATTRIBUTE processCPULoad numeric
+@ATTRIBUTE systemLoadAverage numeric
+@ATTRIBUTE zebraVersion string
+@ATTRIBUTE javaVersion string
+@ATTRIBUTE pageLoadsPerSecond numeric
+@ATTRIBUTE activeSessions1 numeric
+@ATTRIBUTE activeSessions5 numeric
+@ATTRIBUTE realServerTime string
+@ATTRIBUTE navigationTimeReceived string
+@ATTRIBUTE navigationStart numeric
+@ATTRIBUTE unloadEventStart numeric
+@ATTRIBUTE unloadEventEnd numeric
+@ATTRIBUTE unloadEventDuration numeric
+@ATTRIBUTE redirectStart numeric
+@ATTRIBUTE redirectEnd numeric
+@ATTRIBUTE redirectDuration numeric
+@ATTRIBUTE fetchStart numeric
+@ATTRIBUTE domainLookupStart numeric
+@ATTRIBUTE domainLookupEnd numeric
+@ATTRIBUTE domainLookupDuration numeric
+@ATTRIBUTE connectStart numeric
+@ATTRIBUTE connectEnd numeric
+@ATTRIBUTE connectDuration numeric
+@ATTRIBUTE requestStart numeric
+@ATTRIBUTE responseStart numeric
+@ATTRIBUTE responseEnd numeric
+@ATTRIBUTE responseDuration numeric
+@ATTRIBUTE requestToResonseDuration numeric
+@ATTRIBUTE domLoading numeric
+@ATTRIBUTE domInteractive numeric
+@ATTRIBUTE domContentLoadedEventStart numeric
+@ATTRIBUTE domContentLoadedEventEnd numeric
+@ATTRIBUTE domContentLoadedEvent numeric
+@ATTRIBUTE domCompleteDuration numeric
+@ATTRIBUTE loadEventStart numeric
+@ATTRIBUTE loadEventEnd numeric
+@ATTRIBUTE loadEventDuration numeric
+@ATTRIBUTE latencyDuration numeric
+@ATTRIBUTE pageLoadDuration numeric
+@ATTRIBUTE totalTimeDuration numeric
+@ATTRIBUTE msFirstPaint numeric
+@ATTRIBUTE msFirstPaintFromNavigationStartDuationMs numeric
+@ATTRIBUTE msFirstPaintUntilLoadEventEndDurationMs numeric
+@ATTRIBUTE type string
+@ATTRIBUTE redirectCount numeric
+%useCaseId,serverExecutionTimeMs,serverOverheadTimeMs,requestId,sessionId,sessionAgeInMinutes,userAgent,host,useCaseExpectsNavigationTime,mandant,loginName,focusDate,focusDateMinusSystemDate,focusKstNummer,focusKstNrOfMitarbeiter,nrOfAccessibleKostenstelle,limitPeeNummer,sysdatetime,sysdate,systime,weekday,zeitartNummer,minActionDate,maxActionDate,minActionDateMinusSystemDays,maxActionDateMinusSystemDays,actionDateIntevalDays,bwDauerMs,bwMode,planungenGenerierenTage,planungenGenerierenDauerMs,sollGleichIstTage,sollGleichIstDauerMs,buchungslaufTage,buchungslaufDauerMs,kontolaufTage,kontolaufDauerMs,kontolaufIterationen,planungenNeurechnenTage,planungenNeurechnenDauerMs,forcePlanungNeurechnen,zeitartRegelEnforcementAnzahl,zeitartRegelEnforcementDauerMs,wocheNeuRechnenAnzahl,wocheNeuRechnenDauerMs,systemCPULoad,processCPULoad,systemLoadAverage,zebraVersion,javaVersion,pageLoadsPerSecond,activeSessions1,activeSessions5,realServerTime,navigationTimeReceived,navigationStart,unloadEventStart,unloadEventEnd,unloadEventDuration,redirectStart,redirectEnd,redirectDuration,fetchStart,domainLookupStart,domainLookupEnd,domainLookupDuration,connectStart,connectEnd,connectDuration,requestStart,responseStart,responseEnd,responseDuration,requestToResonseDuration,domLoading,domInteractive,domContentLoadedEventStart,domContentLoadedEventEnd,domContentLoadedEvent,domCompleteDuration,loadEventStart,loadEventEnd,loadEventDuration,latencyDuration,pageLoadDuration,totalTimeDuration,msFirstPaint,msFirstPaintFromNavigationStartDuationMs,msFirstPaintUntilLoadEventEndDurationMs,type,redirectCount
+
+@DATA
+initialPageLoad-pepWochenAnsicht,834,281,2,'A96230A18A896A94D0AE0A4330EFEA8C',0,'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET CLR 1.1.4322; .NET4.0C; .NET4.0E)','10.5.2.31:8080',true,0001,'00163881','18.02.2014',0,'0000003585',61,3,?,'18.02.2014 18:54:36','18.02.2014','18:54:36','Di',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'2.2.9','pap6470sr5-20130619_01 (SR5)',0.0,26,35,true,false,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?

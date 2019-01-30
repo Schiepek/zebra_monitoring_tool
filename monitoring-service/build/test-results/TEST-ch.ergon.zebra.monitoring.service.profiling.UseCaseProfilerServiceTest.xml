@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ch.ergon.zebra.monitoring.service.profiling.UseCaseProfilerServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2015-05-29T08:09:32" hostname="SESA" time="0.02">
+  <properties/>
+  <testcase name="testImport_jazz_2_3_17" classname="ch.ergon.zebra.monitoring.service.profiling.UseCaseProfilerServiceTest" time="0.007"/>
+  <testcase name="testImport_jazz_2_4_14" classname="ch.ergon.zebra.monitoring.service.profiling.UseCaseProfilerServiceTest" time="0.003"/>
+  <testcase name="testImport_maps_1_51_0" classname="ch.ergon.zebra.monitoring.service.profiling.UseCaseProfilerServiceTest" time="0.005"/>
+  <testcase name="testImport_jazz_2_2_9" classname="ch.ergon.zebra.monitoring.service.profiling.UseCaseProfilerServiceTest" time="0.004"/>
+  <system-out><![CDATA[10:09:32.641 [Test worker] INFO  c.e.z.m.s.p.UseCaseProfilerService -   Processing source: PathSource [name=sample_profiling_jazz_2.3.17.log]
+10:09:32.648 [Test worker] INFO  c.e.z.m.s.p.UseCaseProfilerService -   Processing source: PathSource [name=sample_profiling_jazz_2.4.14.log]
+10:09:32.652 [Test worker] INFO  c.e.z.m.s.p.UseCaseProfilerService -   Processing source: PathSource [name=sample_profiling_maps_1.51.0.log]
+10:09:32.656 [Test worker] INFO  c.e.z.m.s.p.UseCaseProfilerService -   Processing source: PathSource [name=sample_profiling_jazz_2.2.9.log]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

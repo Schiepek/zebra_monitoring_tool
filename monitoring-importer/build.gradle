@@ -1,0 +1,26 @@
+plugins { id "com.github.johnrengelman.shadow" version "1.2.1" }
+
+apply from: "$rootDir/java.gradle"
+apply from: "$rootDir/ssh.gradle"
+
+dependencies {
+	compile libs.commonsCli
+	compile project(':monitoring-service')
+}
+
+shadowJar {
+	baseName = 'monitoring-importer'
+	manifest { attributes 'Main-Class': 'ch.ergon.zebra.monitoring.importer.MonitoringImporter' }
+}
+
+build.doLast {
+	tasks.shadowJar.execute()
+}
+
+// Usage: gradlew deploy -Dpassword=<password of zebra user>
+task deploy << {
+	def localName = "monitoring-importer-$version-all.jar"
+	def remoteName = 'monitoring-importer.jar'
+
+	uploadToChi(localName, remoteName)
+}

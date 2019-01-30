@@ -1,0 +1,2419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ch.ergon.zebra.monitoring.data.cpu.SqlCpuUsageRepositoryTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2015-05-29T08:09:17" hostname="SESA" time="0.634">
+  <properties/>
+  <testcase name="testFindForElasticsearchWithPaging" classname="ch.ergon.zebra.monitoring.data.cpu.SqlCpuUsageRepositoryTest" time="0.373"/>
+  <testcase name="testGetMaxId" classname="ch.ergon.zebra.monitoring.data.cpu.SqlCpuUsageRepositoryTest" time="0.068"/>
+  <testcase name="testFindHashes" classname="ch.ergon.zebra.monitoring.data.cpu.SqlCpuUsageRepositoryTest" time="0.052"/>
+  <testcase name="testFindById" classname="ch.ergon.zebra.monitoring.data.cpu.SqlCpuUsageRepositoryTest" time="0.047"/>
+  <testcase name="testDataExists" classname="ch.ergon.zebra.monitoring.data.cpu.SqlCpuUsageRepositoryTest" time="0.042"/>
+  <testcase name="testFindForElasticsearch" classname="ch.ergon.zebra.monitoring.data.cpu.SqlCpuUsageRepositoryTest" time="0.046"/>
+  <system-out><![CDATA[10:09:18.083 [Test worker] INFO  o.f.c.internal.util.VersionPrinter - Flyway 3.2 by Boxfuse
+10:09:18.090 [Test worker] INFO  o.f.c.i.dbsupport.DbSupportFactory - Database: jdbc:h2:mem:test (H2 1.4)
+10:09:18.092 [Test worker] DEBUG org.flywaydb.core.Flyway - DDL Transactions Supported: false
+10:09:18.108 [Test worker] DEBUG org.flywaydb.core.Flyway - Schema: PUBLIC
+10:09:18.110 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning for classpath resources at 'db/migration/h2' (Prefix: '', Suffix: '.sql')
+10:09:18.111 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning URL: file:/C:/Workspace/ergon.zebra/zebra-utils/monitoring/monitoring-data/build/resources/main/db/migration/h2
+10:09:18.111 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - JBoss VFS v2 available: false
+10:09:18.112 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\
+10:09:18.112 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning for resources in path: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\db\migration\h2 (db/migration/h2)
+10:09:18.113 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V1__Create_profiling_table.sql
+10:09:18.113 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V2__Create_cpu_table.sql
+10:09:18.113 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V3__Create_memory_table.sql
+10:09:18.113 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V4__Create_imported_file_table.sql
+10:09:18.113 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V5__Create_events_table.sql
+10:09:18.116 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - Spring Jdbc available: false
+10:09:18.118 [Test worker] DEBUG o.f.core.internal.command.DbValidate - Validating migrations ...
+10:09:18.119 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning for classpath resources at 'db/migration/h2' (Prefix: 'V', Suffix: '.sql')
+10:09:18.119 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning URL: file:/C:/Workspace/ergon.zebra/zebra-utils/monitoring/monitoring-data/build/resources/main/db/migration/h2
+10:09:18.119 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - JBoss VFS v2 available: false
+10:09:18.120 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\
+10:09:18.120 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning for resources in path: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\db\migration\h2 (db/migration/h2)
+10:09:18.120 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V1__Create_profiling_table.sql
+10:09:18.120 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V2__Create_cpu_table.sql
+10:09:18.120 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V3__Create_memory_table.sql
+10:09:18.120 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V4__Create_imported_file_table.sql
+10:09:18.120 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V5__Create_events_table.sql
+10:09:18.125 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning for classes at 'db/migration/h2' (Implementing: 'org.flywaydb.core.api.migration.jdbc.JdbcMigration')
+10:09:18.126 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning URL: file:/C:/Workspace/ergon.zebra/zebra-utils/monitoring/monitoring-data/build/resources/main/db/migration/h2
+10:09:18.126 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - JBoss VFS v2 available: false
+10:09:18.126 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\
+10:09:18.126 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning for resources in path: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\db\migration\h2 (db/migration/h2)
+10:09:18.127 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V1__Create_profiling_table.sql (filename: V1__Create_profiling_table.sql)
+10:09:18.127 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V2__Create_cpu_table.sql (filename: V2__Create_cpu_table.sql)
+10:09:18.127 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V3__Create_memory_table.sql (filename: V3__Create_memory_table.sql)
+10:09:18.127 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V4__Create_imported_file_table.sql (filename: V4__Create_imported_file_table.sql)
+10:09:18.127 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V5__Create_events_table.sql (filename: V5__Create_events_table.sql)
+10:09:18.131 [Test worker] INFO  o.f.core.internal.command.DbValidate - Validated 5 migrations (execution time 00:00.013s)
+10:09:18.136 [Test worker] DEBUG o.f.core.internal.command.DbSchemas - Schema "PUBLIC" already exists. Skipping schema creation.
+10:09:18.140 [Test worker] INFO  o.f.c.i.m.MetaDataTableImpl - Creating Metadata table: "PUBLIC"."schema_version"
+10:09:18.145 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 17: CREATE TABLE "PUBLIC"."schema_version" (
+    "version_rank" INT NOT NULL,
+    "installed_rank" INT NOT NULL,
+    "version" VARCHAR(50) NOT NULL,
+    "description" VARCHAR(200) NOT NULL,
+    "type" VARCHAR(20) NOT NULL,
+    "script" VARCHAR(1000) NOT NULL,
+    "checksum" INT,
+    "installed_by" VARCHAR(100) NOT NULL,
+    "installed_on" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "execution_time" INT NOT NULL,
+    "success" BOOLEAN NOT NULL
+)
+10:09:18.146 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 30: ALTER TABLE "PUBLIC"."schema_version" ADD CONSTRAINT "schema_version_pk" PRIMARY KEY ("version")
+10:09:18.146 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 32: CREATE INDEX "PUBLIC"."schema_version_vr_idx" ON "PUBLIC"."schema_version" ("version_rank")
+10:09:18.146 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 33: CREATE INDEX "PUBLIC"."schema_version_ir_idx" ON "PUBLIC"."schema_version" ("installed_rank")
+10:09:18.146 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 34: CREATE INDEX "PUBLIC"."schema_version_s_idx" ON "PUBLIC"."schema_version" ("success")
+10:09:18.146 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE "PUBLIC"."schema_version" (
+    "version_rank" INT NOT NULL,
+    "installed_rank" INT NOT NULL,
+    "version" VARCHAR(50) NOT NULL,
+    "description" VARCHAR(200) NOT NULL,
+    "type" VARCHAR(20) NOT NULL,
+    "script" VARCHAR(1000) NOT NULL,
+    "checksum" INT,
+    "installed_by" VARCHAR(100) NOT NULL,
+    "installed_on" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "execution_time" INT NOT NULL,
+    "success" BOOLEAN NOT NULL
+)
+10:09:18.152 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: ALTER TABLE "PUBLIC"."schema_version" ADD CONSTRAINT "schema_version_pk" PRIMARY KEY ("version")
+10:09:18.156 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "PUBLIC"."schema_version_vr_idx" ON "PUBLIC"."schema_version" ("version_rank")
+10:09:18.157 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "PUBLIC"."schema_version_ir_idx" ON "PUBLIC"."schema_version" ("installed_rank")
+10:09:18.157 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "PUBLIC"."schema_version_s_idx" ON "PUBLIC"."schema_version" ("success")
+10:09:18.157 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - Metadata table "PUBLIC"."schema_version" created.
+10:09:18.157 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.158 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.161 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "PUBLIC": << Empty Schema >>
+10:09:18.162 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 1 - Create profiling table
+10:09:18.169 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE PROFILING
+  (
+    ID                             BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT                         VARCHAR(255) NOT NULL,
+    ENVIRONMENT                    VARCHAR(255) NOT NULL,
+    USECASE_ID                     VARCHAR(255),
+    SERVER_EXECUTION_TIME_MS       DECIMAL(65535,2),
+    SERVER_WAIT_TIME_MS            DECIMAL(65535,2),
+    SERVER_EXEC_NO_WAIT_TIME_MS    DECIMAL(65535,2),
+    SERVER_OVERHEAD_TIME_MS        DECIMAL(65535,2),
+    REQUEST_ID                     DECIMAL(65535,2),
+    SESSION_ID                     VARCHAR(255),
+    SESSION_AGE_IN_MINUTES         DECIMAL(65535,2),
+    USER_AGENT                     VARCHAR(255),
+    HOST                           VARCHAR(255),
+    CLIENT_IP_ADDRESS              VARCHAR(255),
+    USECASE_EXPECTS_NAV_TIME       TINYINT CHECK(USECASE_EXPECTS_NAV_TIME = 1 || USECASE_EXPECTS_NAV_TIME = 0),
+    STATEMENTS_EXECUTED            DECIMAL(65535,2),
+    TOTAL_EXECUTION_TIME_MS        DECIMAL(65535,2),
+    TOTAL_FETCH_TIME_MS            DECIMAL(65535,2),
+    TOTAL_DATABASE_TIME_MS         DECIMAL(65535,2),
+    MANDANT                        VARCHAR(255),
+    LOGIN_NAME                     VARCHAR(255),
+    FOCUS_DATE                     DATE,
+    FOCUS_DATE_MINUS_SYSTEMDATE    DECIMAL(65535,2),
+    FOCUS_KST_NUMMER               VARCHAR(255),
+    FOCUS_KST_NR_OF_MITARBEITER    DECIMAL(65535,2),
+    NR_OF_ACC_KOSTENSTELLE_TODAY   DECIMAL(65535,2),
+    LIMIT_PEE_NUMMER               VARCHAR(255),
+    SYS_DATETIME                   TIMESTAMP,
+    WEEKDAY                        VARCHAR(255),
+    ZEITART_NUMMER                 VARCHAR(255),
+    MIN_ACTION_DATE                DATE,
+    MAX_ACTION_DATE                DATE,
+    MIN_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    MAX_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    ACTION_DATE_INTEVAL_DAYS       DECIMAL(65535,2),
+    BW_DAUER_MS                    DECIMAL(65535,2),
+    BW_MODE                        VARCHAR(255),
+    PLANUNGEN_GENERIEREN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_GENERIEREN_DAUER_MS  DECIMAL(65535,2),
+    SOLL_GLEICH_IST_TAGE           DECIMAL(65535,2),
+    SOLL_GLEICH_IST_DAUER_MS       DECIMAL(65535,2),
+    BUCHUNGSLAUF_TAGE              DECIMAL(65535,2),
+    BUCHUNGSLAUF_DAUER_MS          DECIMAL(65535,2),
+    KONTOLAUF_TAGE                 DECIMAL(65535,2),
+    KONTOLAUF_DAUER_MS             DECIMAL(65535,2),
+    KONTOLAUF_ITERATIONEN          DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_DAUER_MS  DECIMAL(65535,2),
+    FORCE_PLANUNG_NEURECHNEN       TINYINT CHECK(FORCE_PLANUNG_NEURECHNEN = 1 || FORCE_PLANUNG_NEURECHNEN = 0),
+    ZEITART_REGEL_ENFORCM_ANZAHL   DECIMAL(65535,2),
+    ZEITART_REGEL_ENFORCM_DAUER_MS DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_ANZAHL       DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_DAUER_MS     DECIMAL(65535,2),
+    SYSTEM_CPU_LOAD                DECIMAL(65535,2),
+    PROCESS_CPU_LOAD               DECIMAL(65535,2),
+    SYSTEM_LOAD_AVERAGE            DECIMAL(65535,2),
+    ZEBRA_VERSION                  VARCHAR(255),
+    JAVA_VERSION                   VARCHAR(255),
+    PAGE_LOADS_PER_SECOND          DECIMAL(65535,2),
+    ACTIVE_SESSIONS_1              DECIMAL(65535,2),
+    ACTIVE_SESSIONS_5              DECIMAL(65535,2),
+    REAL_SERVER_TIME               TINYINT CHECK(REAL_SERVER_TIME = 1 || REAL_SERVER_TIME = 0),
+    NAVIGATION_TIME_RECEIVED       TINYINT CHECK(NAVIGATION_TIME_RECEIVED = 1 || NAVIGATION_TIME_RECEIVED = 0),
+    NAVIGATION_START               DECIMAL(65535,2),
+    UNLOAD_EVENT_START             DECIMAL(65535,2),
+    UNLOAD_EVENT_END               DECIMAL(65535,2),
+    UNLOAD_EVENT_DURATION          DECIMAL(65535,2),
+    REDIRECT_START                 DECIMAL(65535,2),
+    REDIRECT_END                   DECIMAL(65535,2),
+    REDIRECT_DURATION              DECIMAL(65535,2),
+    FETCH_START                    DECIMAL(65535,2),
+    DOMAIN_LOOKUP_START            DECIMAL(65535,2),
+    DOMAIN_LOOKUP_END              DECIMAL(65535,2),
+    DOMAIN_LOOKUP_DURATION         DECIMAL(65535,2),
+    CONNECT_START                  DECIMAL(65535,2),
+    CONNECT_END                    DECIMAL(65535,2),
+    CONNECT_DURATION               DECIMAL(65535,2),
+    REQUEST_START                  DECIMAL(65535,2),
+    RESPONSE_START                 DECIMAL(65535,2),
+    RESPONSE_END                   DECIMAL(65535,2),
+    RESPONSE_DURATION              DECIMAL(65535,2),
+    REQUEST_TO_RESPONSE_DURATION   DECIMAL(65535,2),
+    DOM_LOADING                    DECIMAL(65535,2),
+    DOM_INTERACTIVE                DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_START DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_END   DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT       DECIMAL(65535,2),
+    DOM_COMPLETE_DURATION          DECIMAL(65535,2),
+    LOAD_EVENT_START               DECIMAL(65535,2),
+    LOAD_EVENT_END                 DECIMAL(65535,2),
+    LOAD_EVENT_DURATION            DECIMAL(65535,2),
+    LATENCY_DURATION               DECIMAL(65535,2),
+    PAGE_LOAD_DURATION             DECIMAL(65535,2),
+    TOTAL_TIME_DURATION            DECIMAL(65535,2),
+    MS_FIRST_PAINT                 DECIMAL(65535,2),
+    MS_FIRST_PAINT_NAVSTARTDUR_MS  DECIMAL(65535,2),
+    MS_FIRST_PAINT_LOAD_ENDDUR_MS  DECIMAL(65535,2),
+    TYPE_NAME                      VARCHAR(255),
+    REDIRECT_COUNT                 DECIMAL(65535,2),
+    HASH 						   CHAR(64)
+  )
+10:09:18.170 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE PROFILING
+  (
+    ID                             BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT                         VARCHAR(255) NOT NULL,
+    ENVIRONMENT                    VARCHAR(255) NOT NULL,
+    USECASE_ID                     VARCHAR(255),
+    SERVER_EXECUTION_TIME_MS       DECIMAL(65535,2),
+    SERVER_WAIT_TIME_MS            DECIMAL(65535,2),
+    SERVER_EXEC_NO_WAIT_TIME_MS    DECIMAL(65535,2),
+    SERVER_OVERHEAD_TIME_MS        DECIMAL(65535,2),
+    REQUEST_ID                     DECIMAL(65535,2),
+    SESSION_ID                     VARCHAR(255),
+    SESSION_AGE_IN_MINUTES         DECIMAL(65535,2),
+    USER_AGENT                     VARCHAR(255),
+    HOST                           VARCHAR(255),
+    CLIENT_IP_ADDRESS              VARCHAR(255),
+    USECASE_EXPECTS_NAV_TIME       TINYINT CHECK(USECASE_EXPECTS_NAV_TIME = 1 || USECASE_EXPECTS_NAV_TIME = 0),
+    STATEMENTS_EXECUTED            DECIMAL(65535,2),
+    TOTAL_EXECUTION_TIME_MS        DECIMAL(65535,2),
+    TOTAL_FETCH_TIME_MS            DECIMAL(65535,2),
+    TOTAL_DATABASE_TIME_MS         DECIMAL(65535,2),
+    MANDANT                        VARCHAR(255),
+    LOGIN_NAME                     VARCHAR(255),
+    FOCUS_DATE                     DATE,
+    FOCUS_DATE_MINUS_SYSTEMDATE    DECIMAL(65535,2),
+    FOCUS_KST_NUMMER               VARCHAR(255),
+    FOCUS_KST_NR_OF_MITARBEITER    DECIMAL(65535,2),
+    NR_OF_ACC_KOSTENSTELLE_TODAY   DECIMAL(65535,2),
+    LIMIT_PEE_NUMMER               VARCHAR(255),
+    SYS_DATETIME                   TIMESTAMP,
+    WEEKDAY                        VARCHAR(255),
+    ZEITART_NUMMER                 VARCHAR(255),
+    MIN_ACTION_DATE                DATE,
+    MAX_ACTION_DATE                DATE,
+    MIN_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    MAX_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    ACTION_DATE_INTEVAL_DAYS       DECIMAL(65535,2),
+    BW_DAUER_MS                    DECIMAL(65535,2),
+    BW_MODE                        VARCHAR(255),
+    PLANUNGEN_GENERIEREN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_GENERIEREN_DAUER_MS  DECIMAL(65535,2),
+    SOLL_GLEICH_IST_TAGE           DECIMAL(65535,2),
+    SOLL_GLEICH_IST_DAUER_MS       DECIMAL(65535,2),
+    BUCHUNGSLAUF_TAGE              DECIMAL(65535,2),
+    BUCHUNGSLAUF_DAUER_MS          DECIMAL(65535,2),
+    KONTOLAUF_TAGE                 DECIMAL(65535,2),
+    KONTOLAUF_DAUER_MS             DECIMAL(65535,2),
+    KONTOLAUF_ITERATIONEN          DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_DAUER_MS  DECIMAL(65535,2),
+    FORCE_PLANUNG_NEURECHNEN       TINYINT CHECK(FORCE_PLANUNG_NEURECHNEN = 1 || FORCE_PLANUNG_NEURECHNEN = 0),
+    ZEITART_REGEL_ENFORCM_ANZAHL   DECIMAL(65535,2),
+    ZEITART_REGEL_ENFORCM_DAUER_MS DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_ANZAHL       DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_DAUER_MS     DECIMAL(65535,2),
+    SYSTEM_CPU_LOAD                DECIMAL(65535,2),
+    PROCESS_CPU_LOAD               DECIMAL(65535,2),
+    SYSTEM_LOAD_AVERAGE            DECIMAL(65535,2),
+    ZEBRA_VERSION                  VARCHAR(255),
+    JAVA_VERSION                   VARCHAR(255),
+    PAGE_LOADS_PER_SECOND          DECIMAL(65535,2),
+    ACTIVE_SESSIONS_1              DECIMAL(65535,2),
+    ACTIVE_SESSIONS_5              DECIMAL(65535,2),
+    REAL_SERVER_TIME               TINYINT CHECK(REAL_SERVER_TIME = 1 || REAL_SERVER_TIME = 0),
+    NAVIGATION_TIME_RECEIVED       TINYINT CHECK(NAVIGATION_TIME_RECEIVED = 1 || NAVIGATION_TIME_RECEIVED = 0),
+    NAVIGATION_START               DECIMAL(65535,2),
+    UNLOAD_EVENT_START             DECIMAL(65535,2),
+    UNLOAD_EVENT_END               DECIMAL(65535,2),
+    UNLOAD_EVENT_DURATION          DECIMAL(65535,2),
+    REDIRECT_START                 DECIMAL(65535,2),
+    REDIRECT_END                   DECIMAL(65535,2),
+    REDIRECT_DURATION              DECIMAL(65535,2),
+    FETCH_START                    DECIMAL(65535,2),
+    DOMAIN_LOOKUP_START            DECIMAL(65535,2),
+    DOMAIN_LOOKUP_END              DECIMAL(65535,2),
+    DOMAIN_LOOKUP_DURATION         DECIMAL(65535,2),
+    CONNECT_START                  DECIMAL(65535,2),
+    CONNECT_END                    DECIMAL(65535,2),
+    CONNECT_DURATION               DECIMAL(65535,2),
+    REQUEST_START                  DECIMAL(65535,2),
+    RESPONSE_START                 DECIMAL(65535,2),
+    RESPONSE_END                   DECIMAL(65535,2),
+    RESPONSE_DURATION              DECIMAL(65535,2),
+    REQUEST_TO_RESPONSE_DURATION   DECIMAL(65535,2),
+    DOM_LOADING                    DECIMAL(65535,2),
+    DOM_INTERACTIVE                DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_START DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_END   DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT       DECIMAL(65535,2),
+    DOM_COMPLETE_DURATION          DECIMAL(65535,2),
+    LOAD_EVENT_START               DECIMAL(65535,2),
+    LOAD_EVENT_END                 DECIMAL(65535,2),
+    LOAD_EVENT_DURATION            DECIMAL(65535,2),
+    LATENCY_DURATION               DECIMAL(65535,2),
+    PAGE_LOAD_DURATION             DECIMAL(65535,2),
+    TOTAL_TIME_DURATION            DECIMAL(65535,2),
+    MS_FIRST_PAINT                 DECIMAL(65535,2),
+    MS_FIRST_PAINT_NAVSTARTDUR_MS  DECIMAL(65535,2),
+    MS_FIRST_PAINT_LOAD_ENDDUR_MS  DECIMAL(65535,2),
+    TYPE_NAME                      VARCHAR(255),
+    REDIRECT_COUNT                 DECIMAL(65535,2),
+    HASH 						   CHAR(64)
+  )
+10:09:18.177 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 1
+10:09:18.181 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.182 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.183 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.184 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 2 - Create cpu table
+10:09:18.185 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE CPU_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    CPU_USAGE       DECIMAL(65535,2),
+    HASH 			CHAR(64)
+  )
+10:09:18.185 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE CPU_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    CPU_USAGE       DECIMAL(65535,2),
+    HASH 			CHAR(64)
+  )
+10:09:18.186 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 2
+10:09:18.188 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.188 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.189 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.190 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 3 - Create memory table
+10:09:18.191 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE MEMORY_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    TOTAL_HEAP 		DECIMAL(65535,2),
+	FREE_HEAP		DECIMAL(65535,2),
+	HASH 			CHAR(64)
+  )
+10:09:18.191 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE MEMORY_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    TOTAL_HEAP 		DECIMAL(65535,2),
+	FREE_HEAP		DECIMAL(65535,2),
+	HASH 			CHAR(64)
+  )
+10:09:18.192 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 3
+10:09:18.193 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.194 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.194 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.196 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 4 - Create imported file table
+10:09:18.196 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE IMPORTED_FILE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    STATUS          VARCHAR(255),
+    IMPORT_DATETIME TIMESTAMP,
+    FILENAME        VARCHAR(255) NOT NULL,
+    STACKTRACE		CLOB,
+    CONSTRAINT UNIQUE_FILE UNIQUE (CLIENT, ENVIRONMENT, FILENAME)
+  )
+10:09:18.197 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE IMPORTED_FILE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    STATUS          VARCHAR(255),
+    IMPORT_DATETIME TIMESTAMP,
+    FILENAME        VARCHAR(255) NOT NULL,
+    STACKTRACE		CLOB,
+    CONSTRAINT UNIQUE_FILE UNIQUE (CLIENT, ENVIRONMENT, FILENAME)
+  )
+10:09:18.198 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 4
+10:09:18.199 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.200 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.201 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.203 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 5 - Create events table
+10:09:18.203 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE EVENTS 
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR2(255) NOT NULL,
+    ENVIRONMENT     VARCHAR2(255) NOT NULL,
+    DATUM           DATE, 
+    "TYPE"          VARCHAR2(255), 
+    BESCHREIBUNG    VARCHAR2(255)
+  )
+10:09:18.204 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 11: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('31.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.204 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 13: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('05.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.204 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 15: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('16.02.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.204 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE EVENTS 
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR2(255) NOT NULL,
+    ENVIRONMENT     VARCHAR2(255) NOT NULL,
+    DATUM           DATE, 
+    "TYPE"          VARCHAR2(255), 
+    BESCHREIBUNG    VARCHAR2(255)
+  )
+10:09:18.205 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('31.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.206 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('05.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.207 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('16.02.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.207 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 5
+10:09:18.208 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.209 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.210 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.212 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Successfully applied 5 migrations to schema "PUBLIC" (execution time 00:00.073s).
+10:09:18.250 [Test worker] DEBUG c.m.query.sql.dml.SQLInsertClause - insert into CPU_USAGE (CLIENT, CPU_USAGE, SYS_DATETIME, ENVIRONMENT, HASH) values (?, ?, ?, ?, ?)
+10:09:18.289 [Test worker] DEBUG c.mysema.query.sql.AbstractSQLQuery - select CPU_USAGE.ID, CPU_USAGE.SYS_DATETIME, CPU_USAGE.CPU_USAGE from CPU_USAGE CPU_USAGE where CPU_USAGE.ID in (select CPU_USAGE.ID from CPU_USAGE CPU_USAGE where CPU_USAGE.ID between ? and ?) and CPU_USAGE.CLIENT = ? and CPU_USAGE.ENVIRONMENT = ? order by CPU_USAGE.ID asc
+10:09:18.293 [Test worker] DEBUG c.mysema.query.sql.AbstractSQLQuery - select CPU_USAGE.ID, CPU_USAGE.SYS_DATETIME, CPU_USAGE.CPU_USAGE from CPU_USAGE CPU_USAGE where CPU_USAGE.ID in (select CPU_USAGE.ID from CPU_USAGE CPU_USAGE where CPU_USAGE.ID between ? and ?) and CPU_USAGE.CLIENT = ? and CPU_USAGE.ENVIRONMENT = ? order by CPU_USAGE.ID asc
+10:09:18.295 [Test worker] DEBUG c.mysema.query.sql.AbstractSQLQuery - select CPU_USAGE.ID, CPU_USAGE.SYS_DATETIME, CPU_USAGE.CPU_USAGE from CPU_USAGE CPU_USAGE where CPU_USAGE.ID in (select CPU_USAGE.ID from CPU_USAGE CPU_USAGE where CPU_USAGE.ID between ? and ?) and CPU_USAGE.CLIENT = ? and CPU_USAGE.ENVIRONMENT = ? order by CPU_USAGE.ID asc
+10:09:18.296 [Test worker] DEBUG c.mysema.query.sql.AbstractSQLQuery - select CPU_USAGE.ID, CPU_USAGE.SYS_DATETIME, CPU_USAGE.CPU_USAGE from CPU_USAGE CPU_USAGE where CPU_USAGE.ID in (select CPU_USAGE.ID from CPU_USAGE CPU_USAGE where CPU_USAGE.ID between ? and ?) and CPU_USAGE.CLIENT = ? and CPU_USAGE.ENVIRONMENT = ? order by CPU_USAGE.ID asc
+10:09:18.298 [Test worker] DEBUG c.mysema.query.sql.AbstractSQLQuery - select CPU_USAGE.ID, CPU_USAGE.SYS_DATETIME, CPU_USAGE.CPU_USAGE from CPU_USAGE CPU_USAGE where CPU_USAGE.ID in (select CPU_USAGE.ID from CPU_USAGE CPU_USAGE where CPU_USAGE.ID between ? and ?) and CPU_USAGE.CLIENT = ? and CPU_USAGE.ENVIRONMENT = ? order by CPU_USAGE.ID asc
+10:09:18.305 [Test worker] INFO  o.f.c.i.dbsupport.DbSupportFactory - Database: jdbc:h2:mem:test (H2 1.4)
+10:09:18.305 [Test worker] DEBUG org.flywaydb.core.Flyway - DDL Transactions Supported: false
+10:09:18.306 [Test worker] DEBUG org.flywaydb.core.Flyway - Schema: PUBLIC
+10:09:18.306 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning for classpath resources at 'db/migration/h2' (Prefix: '', Suffix: '.sql')
+10:09:18.306 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning URL: file:/C:/Workspace/ergon.zebra/zebra-utils/monitoring/monitoring-data/build/resources/main/db/migration/h2
+10:09:18.306 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - JBoss VFS v2 available: false
+10:09:18.307 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\
+10:09:18.307 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning for resources in path: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\db\migration\h2 (db/migration/h2)
+10:09:18.307 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V1__Create_profiling_table.sql
+10:09:18.307 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V2__Create_cpu_table.sql
+10:09:18.307 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V3__Create_memory_table.sql
+10:09:18.308 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V4__Create_imported_file_table.sql
+10:09:18.308 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V5__Create_events_table.sql
+10:09:18.308 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - Spring Jdbc available: false
+10:09:18.308 [Test worker] DEBUG o.f.core.internal.command.DbValidate - Validating migrations ...
+10:09:18.308 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning for classpath resources at 'db/migration/h2' (Prefix: 'V', Suffix: '.sql')
+10:09:18.308 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning URL: file:/C:/Workspace/ergon.zebra/zebra-utils/monitoring/monitoring-data/build/resources/main/db/migration/h2
+10:09:18.309 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - JBoss VFS v2 available: false
+10:09:18.309 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\
+10:09:18.309 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning for resources in path: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\db\migration\h2 (db/migration/h2)
+10:09:18.309 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V1__Create_profiling_table.sql
+10:09:18.310 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V2__Create_cpu_table.sql
+10:09:18.310 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V3__Create_memory_table.sql
+10:09:18.310 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V4__Create_imported_file_table.sql
+10:09:18.310 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V5__Create_events_table.sql
+10:09:18.312 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning for classes at 'db/migration/h2' (Implementing: 'org.flywaydb.core.api.migration.jdbc.JdbcMigration')
+10:09:18.312 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning URL: file:/C:/Workspace/ergon.zebra/zebra-utils/monitoring/monitoring-data/build/resources/main/db/migration/h2
+10:09:18.312 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - JBoss VFS v2 available: false
+10:09:18.312 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\
+10:09:18.312 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning for resources in path: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\db\migration\h2 (db/migration/h2)
+10:09:18.313 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V1__Create_profiling_table.sql (filename: V1__Create_profiling_table.sql)
+10:09:18.313 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V2__Create_cpu_table.sql (filename: V2__Create_cpu_table.sql)
+10:09:18.313 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V3__Create_memory_table.sql (filename: V3__Create_memory_table.sql)
+10:09:18.313 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V4__Create_imported_file_table.sql (filename: V4__Create_imported_file_table.sql)
+10:09:18.313 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V5__Create_events_table.sql (filename: V5__Create_events_table.sql)
+10:09:18.314 [Test worker] INFO  o.f.core.internal.command.DbValidate - Validated 5 migrations (execution time 00:00.006s)
+10:09:18.315 [Test worker] DEBUG o.f.core.internal.command.DbSchemas - Schema "PUBLIC" already exists. Skipping schema creation.
+10:09:18.317 [Test worker] INFO  o.f.c.i.m.MetaDataTableImpl - Creating Metadata table: "PUBLIC"."schema_version"
+10:09:18.319 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 17: CREATE TABLE "PUBLIC"."schema_version" (
+    "version_rank" INT NOT NULL,
+    "installed_rank" INT NOT NULL,
+    "version" VARCHAR(50) NOT NULL,
+    "description" VARCHAR(200) NOT NULL,
+    "type" VARCHAR(20) NOT NULL,
+    "script" VARCHAR(1000) NOT NULL,
+    "checksum" INT,
+    "installed_by" VARCHAR(100) NOT NULL,
+    "installed_on" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "execution_time" INT NOT NULL,
+    "success" BOOLEAN NOT NULL
+)
+10:09:18.319 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 30: ALTER TABLE "PUBLIC"."schema_version" ADD CONSTRAINT "schema_version_pk" PRIMARY KEY ("version")
+10:09:18.319 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 32: CREATE INDEX "PUBLIC"."schema_version_vr_idx" ON "PUBLIC"."schema_version" ("version_rank")
+10:09:18.319 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 33: CREATE INDEX "PUBLIC"."schema_version_ir_idx" ON "PUBLIC"."schema_version" ("installed_rank")
+10:09:18.320 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 34: CREATE INDEX "PUBLIC"."schema_version_s_idx" ON "PUBLIC"."schema_version" ("success")
+10:09:18.320 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE "PUBLIC"."schema_version" (
+    "version_rank" INT NOT NULL,
+    "installed_rank" INT NOT NULL,
+    "version" VARCHAR(50) NOT NULL,
+    "description" VARCHAR(200) NOT NULL,
+    "type" VARCHAR(20) NOT NULL,
+    "script" VARCHAR(1000) NOT NULL,
+    "checksum" INT,
+    "installed_by" VARCHAR(100) NOT NULL,
+    "installed_on" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "execution_time" INT NOT NULL,
+    "success" BOOLEAN NOT NULL
+)
+10:09:18.320 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: ALTER TABLE "PUBLIC"."schema_version" ADD CONSTRAINT "schema_version_pk" PRIMARY KEY ("version")
+10:09:18.320 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "PUBLIC"."schema_version_vr_idx" ON "PUBLIC"."schema_version" ("version_rank")
+10:09:18.321 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "PUBLIC"."schema_version_ir_idx" ON "PUBLIC"."schema_version" ("installed_rank")
+10:09:18.321 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "PUBLIC"."schema_version_s_idx" ON "PUBLIC"."schema_version" ("success")
+10:09:18.321 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - Metadata table "PUBLIC"."schema_version" created.
+10:09:18.321 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.321 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.322 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "PUBLIC": << Empty Schema >>
+10:09:18.322 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 1 - Create profiling table
+10:09:18.325 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE PROFILING
+  (
+    ID                             BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT                         VARCHAR(255) NOT NULL,
+    ENVIRONMENT                    VARCHAR(255) NOT NULL,
+    USECASE_ID                     VARCHAR(255),
+    SERVER_EXECUTION_TIME_MS       DECIMAL(65535,2),
+    SERVER_WAIT_TIME_MS            DECIMAL(65535,2),
+    SERVER_EXEC_NO_WAIT_TIME_MS    DECIMAL(65535,2),
+    SERVER_OVERHEAD_TIME_MS        DECIMAL(65535,2),
+    REQUEST_ID                     DECIMAL(65535,2),
+    SESSION_ID                     VARCHAR(255),
+    SESSION_AGE_IN_MINUTES         DECIMAL(65535,2),
+    USER_AGENT                     VARCHAR(255),
+    HOST                           VARCHAR(255),
+    CLIENT_IP_ADDRESS              VARCHAR(255),
+    USECASE_EXPECTS_NAV_TIME       TINYINT CHECK(USECASE_EXPECTS_NAV_TIME = 1 || USECASE_EXPECTS_NAV_TIME = 0),
+    STATEMENTS_EXECUTED            DECIMAL(65535,2),
+    TOTAL_EXECUTION_TIME_MS        DECIMAL(65535,2),
+    TOTAL_FETCH_TIME_MS            DECIMAL(65535,2),
+    TOTAL_DATABASE_TIME_MS         DECIMAL(65535,2),
+    MANDANT                        VARCHAR(255),
+    LOGIN_NAME                     VARCHAR(255),
+    FOCUS_DATE                     DATE,
+    FOCUS_DATE_MINUS_SYSTEMDATE    DECIMAL(65535,2),
+    FOCUS_KST_NUMMER               VARCHAR(255),
+    FOCUS_KST_NR_OF_MITARBEITER    DECIMAL(65535,2),
+    NR_OF_ACC_KOSTENSTELLE_TODAY   DECIMAL(65535,2),
+    LIMIT_PEE_NUMMER               VARCHAR(255),
+    SYS_DATETIME                   TIMESTAMP,
+    WEEKDAY                        VARCHAR(255),
+    ZEITART_NUMMER                 VARCHAR(255),
+    MIN_ACTION_DATE                DATE,
+    MAX_ACTION_DATE                DATE,
+    MIN_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    MAX_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    ACTION_DATE_INTEVAL_DAYS       DECIMAL(65535,2),
+    BW_DAUER_MS                    DECIMAL(65535,2),
+    BW_MODE                        VARCHAR(255),
+    PLANUNGEN_GENERIEREN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_GENERIEREN_DAUER_MS  DECIMAL(65535,2),
+    SOLL_GLEICH_IST_TAGE           DECIMAL(65535,2),
+    SOLL_GLEICH_IST_DAUER_MS       DECIMAL(65535,2),
+    BUCHUNGSLAUF_TAGE              DECIMAL(65535,2),
+    BUCHUNGSLAUF_DAUER_MS          DECIMAL(65535,2),
+    KONTOLAUF_TAGE                 DECIMAL(65535,2),
+    KONTOLAUF_DAUER_MS             DECIMAL(65535,2),
+    KONTOLAUF_ITERATIONEN          DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_DAUER_MS  DECIMAL(65535,2),
+    FORCE_PLANUNG_NEURECHNEN       TINYINT CHECK(FORCE_PLANUNG_NEURECHNEN = 1 || FORCE_PLANUNG_NEURECHNEN = 0),
+    ZEITART_REGEL_ENFORCM_ANZAHL   DECIMAL(65535,2),
+    ZEITART_REGEL_ENFORCM_DAUER_MS DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_ANZAHL       DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_DAUER_MS     DECIMAL(65535,2),
+    SYSTEM_CPU_LOAD                DECIMAL(65535,2),
+    PROCESS_CPU_LOAD               DECIMAL(65535,2),
+    SYSTEM_LOAD_AVERAGE            DECIMAL(65535,2),
+    ZEBRA_VERSION                  VARCHAR(255),
+    JAVA_VERSION                   VARCHAR(255),
+    PAGE_LOADS_PER_SECOND          DECIMAL(65535,2),
+    ACTIVE_SESSIONS_1              DECIMAL(65535,2),
+    ACTIVE_SESSIONS_5              DECIMAL(65535,2),
+    REAL_SERVER_TIME               TINYINT CHECK(REAL_SERVER_TIME = 1 || REAL_SERVER_TIME = 0),
+    NAVIGATION_TIME_RECEIVED       TINYINT CHECK(NAVIGATION_TIME_RECEIVED = 1 || NAVIGATION_TIME_RECEIVED = 0),
+    NAVIGATION_START               DECIMAL(65535,2),
+    UNLOAD_EVENT_START             DECIMAL(65535,2),
+    UNLOAD_EVENT_END               DECIMAL(65535,2),
+    UNLOAD_EVENT_DURATION          DECIMAL(65535,2),
+    REDIRECT_START                 DECIMAL(65535,2),
+    REDIRECT_END                   DECIMAL(65535,2),
+    REDIRECT_DURATION              DECIMAL(65535,2),
+    FETCH_START                    DECIMAL(65535,2),
+    DOMAIN_LOOKUP_START            DECIMAL(65535,2),
+    DOMAIN_LOOKUP_END              DECIMAL(65535,2),
+    DOMAIN_LOOKUP_DURATION         DECIMAL(65535,2),
+    CONNECT_START                  DECIMAL(65535,2),
+    CONNECT_END                    DECIMAL(65535,2),
+    CONNECT_DURATION               DECIMAL(65535,2),
+    REQUEST_START                  DECIMAL(65535,2),
+    RESPONSE_START                 DECIMAL(65535,2),
+    RESPONSE_END                   DECIMAL(65535,2),
+    RESPONSE_DURATION              DECIMAL(65535,2),
+    REQUEST_TO_RESPONSE_DURATION   DECIMAL(65535,2),
+    DOM_LOADING                    DECIMAL(65535,2),
+    DOM_INTERACTIVE                DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_START DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_END   DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT       DECIMAL(65535,2),
+    DOM_COMPLETE_DURATION          DECIMAL(65535,2),
+    LOAD_EVENT_START               DECIMAL(65535,2),
+    LOAD_EVENT_END                 DECIMAL(65535,2),
+    LOAD_EVENT_DURATION            DECIMAL(65535,2),
+    LATENCY_DURATION               DECIMAL(65535,2),
+    PAGE_LOAD_DURATION             DECIMAL(65535,2),
+    TOTAL_TIME_DURATION            DECIMAL(65535,2),
+    MS_FIRST_PAINT                 DECIMAL(65535,2),
+    MS_FIRST_PAINT_NAVSTARTDUR_MS  DECIMAL(65535,2),
+    MS_FIRST_PAINT_LOAD_ENDDUR_MS  DECIMAL(65535,2),
+    TYPE_NAME                      VARCHAR(255),
+    REDIRECT_COUNT                 DECIMAL(65535,2),
+    HASH 						   CHAR(64)
+  )
+10:09:18.326 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE PROFILING
+  (
+    ID                             BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT                         VARCHAR(255) NOT NULL,
+    ENVIRONMENT                    VARCHAR(255) NOT NULL,
+    USECASE_ID                     VARCHAR(255),
+    SERVER_EXECUTION_TIME_MS       DECIMAL(65535,2),
+    SERVER_WAIT_TIME_MS            DECIMAL(65535,2),
+    SERVER_EXEC_NO_WAIT_TIME_MS    DECIMAL(65535,2),
+    SERVER_OVERHEAD_TIME_MS        DECIMAL(65535,2),
+    REQUEST_ID                     DECIMAL(65535,2),
+    SESSION_ID                     VARCHAR(255),
+    SESSION_AGE_IN_MINUTES         DECIMAL(65535,2),
+    USER_AGENT                     VARCHAR(255),
+    HOST                           VARCHAR(255),
+    CLIENT_IP_ADDRESS              VARCHAR(255),
+    USECASE_EXPECTS_NAV_TIME       TINYINT CHECK(USECASE_EXPECTS_NAV_TIME = 1 || USECASE_EXPECTS_NAV_TIME = 0),
+    STATEMENTS_EXECUTED            DECIMAL(65535,2),
+    TOTAL_EXECUTION_TIME_MS        DECIMAL(65535,2),
+    TOTAL_FETCH_TIME_MS            DECIMAL(65535,2),
+    TOTAL_DATABASE_TIME_MS         DECIMAL(65535,2),
+    MANDANT                        VARCHAR(255),
+    LOGIN_NAME                     VARCHAR(255),
+    FOCUS_DATE                     DATE,
+    FOCUS_DATE_MINUS_SYSTEMDATE    DECIMAL(65535,2),
+    FOCUS_KST_NUMMER               VARCHAR(255),
+    FOCUS_KST_NR_OF_MITARBEITER    DECIMAL(65535,2),
+    NR_OF_ACC_KOSTENSTELLE_TODAY   DECIMAL(65535,2),
+    LIMIT_PEE_NUMMER               VARCHAR(255),
+    SYS_DATETIME                   TIMESTAMP,
+    WEEKDAY                        VARCHAR(255),
+    ZEITART_NUMMER                 VARCHAR(255),
+    MIN_ACTION_DATE                DATE,
+    MAX_ACTION_DATE                DATE,
+    MIN_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    MAX_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    ACTION_DATE_INTEVAL_DAYS       DECIMAL(65535,2),
+    BW_DAUER_MS                    DECIMAL(65535,2),
+    BW_MODE                        VARCHAR(255),
+    PLANUNGEN_GENERIEREN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_GENERIEREN_DAUER_MS  DECIMAL(65535,2),
+    SOLL_GLEICH_IST_TAGE           DECIMAL(65535,2),
+    SOLL_GLEICH_IST_DAUER_MS       DECIMAL(65535,2),
+    BUCHUNGSLAUF_TAGE              DECIMAL(65535,2),
+    BUCHUNGSLAUF_DAUER_MS          DECIMAL(65535,2),
+    KONTOLAUF_TAGE                 DECIMAL(65535,2),
+    KONTOLAUF_DAUER_MS             DECIMAL(65535,2),
+    KONTOLAUF_ITERATIONEN          DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_DAUER_MS  DECIMAL(65535,2),
+    FORCE_PLANUNG_NEURECHNEN       TINYINT CHECK(FORCE_PLANUNG_NEURECHNEN = 1 || FORCE_PLANUNG_NEURECHNEN = 0),
+    ZEITART_REGEL_ENFORCM_ANZAHL   DECIMAL(65535,2),
+    ZEITART_REGEL_ENFORCM_DAUER_MS DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_ANZAHL       DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_DAUER_MS     DECIMAL(65535,2),
+    SYSTEM_CPU_LOAD                DECIMAL(65535,2),
+    PROCESS_CPU_LOAD               DECIMAL(65535,2),
+    SYSTEM_LOAD_AVERAGE            DECIMAL(65535,2),
+    ZEBRA_VERSION                  VARCHAR(255),
+    JAVA_VERSION                   VARCHAR(255),
+    PAGE_LOADS_PER_SECOND          DECIMAL(65535,2),
+    ACTIVE_SESSIONS_1              DECIMAL(65535,2),
+    ACTIVE_SESSIONS_5              DECIMAL(65535,2),
+    REAL_SERVER_TIME               TINYINT CHECK(REAL_SERVER_TIME = 1 || REAL_SERVER_TIME = 0),
+    NAVIGATION_TIME_RECEIVED       TINYINT CHECK(NAVIGATION_TIME_RECEIVED = 1 || NAVIGATION_TIME_RECEIVED = 0),
+    NAVIGATION_START               DECIMAL(65535,2),
+    UNLOAD_EVENT_START             DECIMAL(65535,2),
+    UNLOAD_EVENT_END               DECIMAL(65535,2),
+    UNLOAD_EVENT_DURATION          DECIMAL(65535,2),
+    REDIRECT_START                 DECIMAL(65535,2),
+    REDIRECT_END                   DECIMAL(65535,2),
+    REDIRECT_DURATION              DECIMAL(65535,2),
+    FETCH_START                    DECIMAL(65535,2),
+    DOMAIN_LOOKUP_START            DECIMAL(65535,2),
+    DOMAIN_LOOKUP_END              DECIMAL(65535,2),
+    DOMAIN_LOOKUP_DURATION         DECIMAL(65535,2),
+    CONNECT_START                  DECIMAL(65535,2),
+    CONNECT_END                    DECIMAL(65535,2),
+    CONNECT_DURATION               DECIMAL(65535,2),
+    REQUEST_START                  DECIMAL(65535,2),
+    RESPONSE_START                 DECIMAL(65535,2),
+    RESPONSE_END                   DECIMAL(65535,2),
+    RESPONSE_DURATION              DECIMAL(65535,2),
+    REQUEST_TO_RESPONSE_DURATION   DECIMAL(65535,2),
+    DOM_LOADING                    DECIMAL(65535,2),
+    DOM_INTERACTIVE                DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_START DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_END   DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT       DECIMAL(65535,2),
+    DOM_COMPLETE_DURATION          DECIMAL(65535,2),
+    LOAD_EVENT_START               DECIMAL(65535,2),
+    LOAD_EVENT_END                 DECIMAL(65535,2),
+    LOAD_EVENT_DURATION            DECIMAL(65535,2),
+    LATENCY_DURATION               DECIMAL(65535,2),
+    PAGE_LOAD_DURATION             DECIMAL(65535,2),
+    TOTAL_TIME_DURATION            DECIMAL(65535,2),
+    MS_FIRST_PAINT                 DECIMAL(65535,2),
+    MS_FIRST_PAINT_NAVSTARTDUR_MS  DECIMAL(65535,2),
+    MS_FIRST_PAINT_LOAD_ENDDUR_MS  DECIMAL(65535,2),
+    TYPE_NAME                      VARCHAR(255),
+    REDIRECT_COUNT                 DECIMAL(65535,2),
+    HASH 						   CHAR(64)
+  )
+10:09:18.329 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 1
+10:09:18.330 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.331 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.331 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.332 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 2 - Create cpu table
+10:09:18.333 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE CPU_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    CPU_USAGE       DECIMAL(65535,2),
+    HASH 			CHAR(64)
+  )
+10:09:18.333 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE CPU_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    CPU_USAGE       DECIMAL(65535,2),
+    HASH 			CHAR(64)
+  )
+10:09:18.333 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 2
+10:09:18.334 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.335 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.335 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.337 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 3 - Create memory table
+10:09:18.338 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE MEMORY_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    TOTAL_HEAP 		DECIMAL(65535,2),
+	FREE_HEAP		DECIMAL(65535,2),
+	HASH 			CHAR(64)
+  )
+10:09:18.338 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE MEMORY_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    TOTAL_HEAP 		DECIMAL(65535,2),
+	FREE_HEAP		DECIMAL(65535,2),
+	HASH 			CHAR(64)
+  )
+10:09:18.338 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 3
+10:09:18.340 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.341 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.341 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.343 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 4 - Create imported file table
+10:09:18.344 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE IMPORTED_FILE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    STATUS          VARCHAR(255),
+    IMPORT_DATETIME TIMESTAMP,
+    FILENAME        VARCHAR(255) NOT NULL,
+    STACKTRACE		CLOB,
+    CONSTRAINT UNIQUE_FILE UNIQUE (CLIENT, ENVIRONMENT, FILENAME)
+  )
+10:09:18.344 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE IMPORTED_FILE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    STATUS          VARCHAR(255),
+    IMPORT_DATETIME TIMESTAMP,
+    FILENAME        VARCHAR(255) NOT NULL,
+    STACKTRACE		CLOB,
+    CONSTRAINT UNIQUE_FILE UNIQUE (CLIENT, ENVIRONMENT, FILENAME)
+  )
+10:09:18.345 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 4
+10:09:18.346 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.347 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.348 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.349 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 5 - Create events table
+10:09:18.350 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE EVENTS 
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR2(255) NOT NULL,
+    ENVIRONMENT     VARCHAR2(255) NOT NULL,
+    DATUM           DATE, 
+    "TYPE"          VARCHAR2(255), 
+    BESCHREIBUNG    VARCHAR2(255)
+  )
+10:09:18.350 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 11: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('31.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.350 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 13: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('05.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.350 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 15: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('16.02.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.351 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE EVENTS 
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR2(255) NOT NULL,
+    ENVIRONMENT     VARCHAR2(255) NOT NULL,
+    DATUM           DATE, 
+    "TYPE"          VARCHAR2(255), 
+    BESCHREIBUNG    VARCHAR2(255)
+  )
+10:09:18.351 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('31.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.352 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('05.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.352 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('16.02.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.352 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 5
+10:09:18.353 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.354 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.354 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.355 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Successfully applied 5 migrations to schema "PUBLIC" (execution time 00:00.038s).
+10:09:18.360 [Test worker] DEBUG c.m.query.sql.dml.SQLInsertClause - insert into CPU_USAGE (CLIENT, CPU_USAGE, SYS_DATETIME, ENVIRONMENT, HASH) values (?, ?, ?, ?, ?)
+10:09:18.370 [Test worker] DEBUG c.mysema.query.sql.AbstractSQLQuery - select max(CPU_USAGE.ID) from CPU_USAGE CPU_USAGE where CPU_USAGE.CLIENT = ? and CPU_USAGE.ENVIRONMENT = ? limit ?
+10:09:18.374 [Test worker] INFO  o.f.c.i.dbsupport.DbSupportFactory - Database: jdbc:h2:mem:test (H2 1.4)
+10:09:18.374 [Test worker] DEBUG org.flywaydb.core.Flyway - DDL Transactions Supported: false
+10:09:18.375 [Test worker] DEBUG org.flywaydb.core.Flyway - Schema: PUBLIC
+10:09:18.375 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning for classpath resources at 'db/migration/h2' (Prefix: '', Suffix: '.sql')
+10:09:18.375 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning URL: file:/C:/Workspace/ergon.zebra/zebra-utils/monitoring/monitoring-data/build/resources/main/db/migration/h2
+10:09:18.375 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - JBoss VFS v2 available: false
+10:09:18.375 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\
+10:09:18.375 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning for resources in path: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\db\migration\h2 (db/migration/h2)
+10:09:18.376 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V1__Create_profiling_table.sql
+10:09:18.376 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V2__Create_cpu_table.sql
+10:09:18.376 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V3__Create_memory_table.sql
+10:09:18.376 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V4__Create_imported_file_table.sql
+10:09:18.376 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V5__Create_events_table.sql
+10:09:18.376 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - Spring Jdbc available: false
+10:09:18.376 [Test worker] DEBUG o.f.core.internal.command.DbValidate - Validating migrations ...
+10:09:18.376 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning for classpath resources at 'db/migration/h2' (Prefix: 'V', Suffix: '.sql')
+10:09:18.376 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning URL: file:/C:/Workspace/ergon.zebra/zebra-utils/monitoring/monitoring-data/build/resources/main/db/migration/h2
+10:09:18.376 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - JBoss VFS v2 available: false
+10:09:18.377 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\
+10:09:18.377 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning for resources in path: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\db\migration\h2 (db/migration/h2)
+10:09:18.377 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V1__Create_profiling_table.sql
+10:09:18.377 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V2__Create_cpu_table.sql
+10:09:18.377 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V3__Create_memory_table.sql
+10:09:18.377 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V4__Create_imported_file_table.sql
+10:09:18.377 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V5__Create_events_table.sql
+10:09:18.378 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning for classes at 'db/migration/h2' (Implementing: 'org.flywaydb.core.api.migration.jdbc.JdbcMigration')
+10:09:18.378 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning URL: file:/C:/Workspace/ergon.zebra/zebra-utils/monitoring/monitoring-data/build/resources/main/db/migration/h2
+10:09:18.379 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - JBoss VFS v2 available: false
+10:09:18.379 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\
+10:09:18.379 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning for resources in path: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\db\migration\h2 (db/migration/h2)
+10:09:18.379 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V1__Create_profiling_table.sql (filename: V1__Create_profiling_table.sql)
+10:09:18.379 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V2__Create_cpu_table.sql (filename: V2__Create_cpu_table.sql)
+10:09:18.379 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V3__Create_memory_table.sql (filename: V3__Create_memory_table.sql)
+10:09:18.379 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V4__Create_imported_file_table.sql (filename: V4__Create_imported_file_table.sql)
+10:09:18.379 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V5__Create_events_table.sql (filename: V5__Create_events_table.sql)
+10:09:18.380 [Test worker] INFO  o.f.core.internal.command.DbValidate - Validated 5 migrations (execution time 00:00.004s)
+10:09:18.380 [Test worker] DEBUG o.f.core.internal.command.DbSchemas - Schema "PUBLIC" already exists. Skipping schema creation.
+10:09:18.381 [Test worker] INFO  o.f.c.i.m.MetaDataTableImpl - Creating Metadata table: "PUBLIC"."schema_version"
+10:09:18.382 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 17: CREATE TABLE "PUBLIC"."schema_version" (
+    "version_rank" INT NOT NULL,
+    "installed_rank" INT NOT NULL,
+    "version" VARCHAR(50) NOT NULL,
+    "description" VARCHAR(200) NOT NULL,
+    "type" VARCHAR(20) NOT NULL,
+    "script" VARCHAR(1000) NOT NULL,
+    "checksum" INT,
+    "installed_by" VARCHAR(100) NOT NULL,
+    "installed_on" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "execution_time" INT NOT NULL,
+    "success" BOOLEAN NOT NULL
+)
+10:09:18.382 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 30: ALTER TABLE "PUBLIC"."schema_version" ADD CONSTRAINT "schema_version_pk" PRIMARY KEY ("version")
+10:09:18.382 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 32: CREATE INDEX "PUBLIC"."schema_version_vr_idx" ON "PUBLIC"."schema_version" ("version_rank")
+10:09:18.383 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 33: CREATE INDEX "PUBLIC"."schema_version_ir_idx" ON "PUBLIC"."schema_version" ("installed_rank")
+10:09:18.383 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 34: CREATE INDEX "PUBLIC"."schema_version_s_idx" ON "PUBLIC"."schema_version" ("success")
+10:09:18.383 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE "PUBLIC"."schema_version" (
+    "version_rank" INT NOT NULL,
+    "installed_rank" INT NOT NULL,
+    "version" VARCHAR(50) NOT NULL,
+    "description" VARCHAR(200) NOT NULL,
+    "type" VARCHAR(20) NOT NULL,
+    "script" VARCHAR(1000) NOT NULL,
+    "checksum" INT,
+    "installed_by" VARCHAR(100) NOT NULL,
+    "installed_on" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "execution_time" INT NOT NULL,
+    "success" BOOLEAN NOT NULL
+)
+10:09:18.384 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: ALTER TABLE "PUBLIC"."schema_version" ADD CONSTRAINT "schema_version_pk" PRIMARY KEY ("version")
+10:09:18.384 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "PUBLIC"."schema_version_vr_idx" ON "PUBLIC"."schema_version" ("version_rank")
+10:09:18.384 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "PUBLIC"."schema_version_ir_idx" ON "PUBLIC"."schema_version" ("installed_rank")
+10:09:18.385 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "PUBLIC"."schema_version_s_idx" ON "PUBLIC"."schema_version" ("success")
+10:09:18.385 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - Metadata table "PUBLIC"."schema_version" created.
+10:09:18.385 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.385 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.386 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "PUBLIC": << Empty Schema >>
+10:09:18.386 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 1 - Create profiling table
+10:09:18.388 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE PROFILING
+  (
+    ID                             BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT                         VARCHAR(255) NOT NULL,
+    ENVIRONMENT                    VARCHAR(255) NOT NULL,
+    USECASE_ID                     VARCHAR(255),
+    SERVER_EXECUTION_TIME_MS       DECIMAL(65535,2),
+    SERVER_WAIT_TIME_MS            DECIMAL(65535,2),
+    SERVER_EXEC_NO_WAIT_TIME_MS    DECIMAL(65535,2),
+    SERVER_OVERHEAD_TIME_MS        DECIMAL(65535,2),
+    REQUEST_ID                     DECIMAL(65535,2),
+    SESSION_ID                     VARCHAR(255),
+    SESSION_AGE_IN_MINUTES         DECIMAL(65535,2),
+    USER_AGENT                     VARCHAR(255),
+    HOST                           VARCHAR(255),
+    CLIENT_IP_ADDRESS              VARCHAR(255),
+    USECASE_EXPECTS_NAV_TIME       TINYINT CHECK(USECASE_EXPECTS_NAV_TIME = 1 || USECASE_EXPECTS_NAV_TIME = 0),
+    STATEMENTS_EXECUTED            DECIMAL(65535,2),
+    TOTAL_EXECUTION_TIME_MS        DECIMAL(65535,2),
+    TOTAL_FETCH_TIME_MS            DECIMAL(65535,2),
+    TOTAL_DATABASE_TIME_MS         DECIMAL(65535,2),
+    MANDANT                        VARCHAR(255),
+    LOGIN_NAME                     VARCHAR(255),
+    FOCUS_DATE                     DATE,
+    FOCUS_DATE_MINUS_SYSTEMDATE    DECIMAL(65535,2),
+    FOCUS_KST_NUMMER               VARCHAR(255),
+    FOCUS_KST_NR_OF_MITARBEITER    DECIMAL(65535,2),
+    NR_OF_ACC_KOSTENSTELLE_TODAY   DECIMAL(65535,2),
+    LIMIT_PEE_NUMMER               VARCHAR(255),
+    SYS_DATETIME                   TIMESTAMP,
+    WEEKDAY                        VARCHAR(255),
+    ZEITART_NUMMER                 VARCHAR(255),
+    MIN_ACTION_DATE                DATE,
+    MAX_ACTION_DATE                DATE,
+    MIN_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    MAX_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    ACTION_DATE_INTEVAL_DAYS       DECIMAL(65535,2),
+    BW_DAUER_MS                    DECIMAL(65535,2),
+    BW_MODE                        VARCHAR(255),
+    PLANUNGEN_GENERIEREN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_GENERIEREN_DAUER_MS  DECIMAL(65535,2),
+    SOLL_GLEICH_IST_TAGE           DECIMAL(65535,2),
+    SOLL_GLEICH_IST_DAUER_MS       DECIMAL(65535,2),
+    BUCHUNGSLAUF_TAGE              DECIMAL(65535,2),
+    BUCHUNGSLAUF_DAUER_MS          DECIMAL(65535,2),
+    KONTOLAUF_TAGE                 DECIMAL(65535,2),
+    KONTOLAUF_DAUER_MS             DECIMAL(65535,2),
+    KONTOLAUF_ITERATIONEN          DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_DAUER_MS  DECIMAL(65535,2),
+    FORCE_PLANUNG_NEURECHNEN       TINYINT CHECK(FORCE_PLANUNG_NEURECHNEN = 1 || FORCE_PLANUNG_NEURECHNEN = 0),
+    ZEITART_REGEL_ENFORCM_ANZAHL   DECIMAL(65535,2),
+    ZEITART_REGEL_ENFORCM_DAUER_MS DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_ANZAHL       DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_DAUER_MS     DECIMAL(65535,2),
+    SYSTEM_CPU_LOAD                DECIMAL(65535,2),
+    PROCESS_CPU_LOAD               DECIMAL(65535,2),
+    SYSTEM_LOAD_AVERAGE            DECIMAL(65535,2),
+    ZEBRA_VERSION                  VARCHAR(255),
+    JAVA_VERSION                   VARCHAR(255),
+    PAGE_LOADS_PER_SECOND          DECIMAL(65535,2),
+    ACTIVE_SESSIONS_1              DECIMAL(65535,2),
+    ACTIVE_SESSIONS_5              DECIMAL(65535,2),
+    REAL_SERVER_TIME               TINYINT CHECK(REAL_SERVER_TIME = 1 || REAL_SERVER_TIME = 0),
+    NAVIGATION_TIME_RECEIVED       TINYINT CHECK(NAVIGATION_TIME_RECEIVED = 1 || NAVIGATION_TIME_RECEIVED = 0),
+    NAVIGATION_START               DECIMAL(65535,2),
+    UNLOAD_EVENT_START             DECIMAL(65535,2),
+    UNLOAD_EVENT_END               DECIMAL(65535,2),
+    UNLOAD_EVENT_DURATION          DECIMAL(65535,2),
+    REDIRECT_START                 DECIMAL(65535,2),
+    REDIRECT_END                   DECIMAL(65535,2),
+    REDIRECT_DURATION              DECIMAL(65535,2),
+    FETCH_START                    DECIMAL(65535,2),
+    DOMAIN_LOOKUP_START            DECIMAL(65535,2),
+    DOMAIN_LOOKUP_END              DECIMAL(65535,2),
+    DOMAIN_LOOKUP_DURATION         DECIMAL(65535,2),
+    CONNECT_START                  DECIMAL(65535,2),
+    CONNECT_END                    DECIMAL(65535,2),
+    CONNECT_DURATION               DECIMAL(65535,2),
+    REQUEST_START                  DECIMAL(65535,2),
+    RESPONSE_START                 DECIMAL(65535,2),
+    RESPONSE_END                   DECIMAL(65535,2),
+    RESPONSE_DURATION              DECIMAL(65535,2),
+    REQUEST_TO_RESPONSE_DURATION   DECIMAL(65535,2),
+    DOM_LOADING                    DECIMAL(65535,2),
+    DOM_INTERACTIVE                DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_START DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_END   DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT       DECIMAL(65535,2),
+    DOM_COMPLETE_DURATION          DECIMAL(65535,2),
+    LOAD_EVENT_START               DECIMAL(65535,2),
+    LOAD_EVENT_END                 DECIMAL(65535,2),
+    LOAD_EVENT_DURATION            DECIMAL(65535,2),
+    LATENCY_DURATION               DECIMAL(65535,2),
+    PAGE_LOAD_DURATION             DECIMAL(65535,2),
+    TOTAL_TIME_DURATION            DECIMAL(65535,2),
+    MS_FIRST_PAINT                 DECIMAL(65535,2),
+    MS_FIRST_PAINT_NAVSTARTDUR_MS  DECIMAL(65535,2),
+    MS_FIRST_PAINT_LOAD_ENDDUR_MS  DECIMAL(65535,2),
+    TYPE_NAME                      VARCHAR(255),
+    REDIRECT_COUNT                 DECIMAL(65535,2),
+    HASH 						   CHAR(64)
+  )
+10:09:18.388 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE PROFILING
+  (
+    ID                             BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT                         VARCHAR(255) NOT NULL,
+    ENVIRONMENT                    VARCHAR(255) NOT NULL,
+    USECASE_ID                     VARCHAR(255),
+    SERVER_EXECUTION_TIME_MS       DECIMAL(65535,2),
+    SERVER_WAIT_TIME_MS            DECIMAL(65535,2),
+    SERVER_EXEC_NO_WAIT_TIME_MS    DECIMAL(65535,2),
+    SERVER_OVERHEAD_TIME_MS        DECIMAL(65535,2),
+    REQUEST_ID                     DECIMAL(65535,2),
+    SESSION_ID                     VARCHAR(255),
+    SESSION_AGE_IN_MINUTES         DECIMAL(65535,2),
+    USER_AGENT                     VARCHAR(255),
+    HOST                           VARCHAR(255),
+    CLIENT_IP_ADDRESS              VARCHAR(255),
+    USECASE_EXPECTS_NAV_TIME       TINYINT CHECK(USECASE_EXPECTS_NAV_TIME = 1 || USECASE_EXPECTS_NAV_TIME = 0),
+    STATEMENTS_EXECUTED            DECIMAL(65535,2),
+    TOTAL_EXECUTION_TIME_MS        DECIMAL(65535,2),
+    TOTAL_FETCH_TIME_MS            DECIMAL(65535,2),
+    TOTAL_DATABASE_TIME_MS         DECIMAL(65535,2),
+    MANDANT                        VARCHAR(255),
+    LOGIN_NAME                     VARCHAR(255),
+    FOCUS_DATE                     DATE,
+    FOCUS_DATE_MINUS_SYSTEMDATE    DECIMAL(65535,2),
+    FOCUS_KST_NUMMER               VARCHAR(255),
+    FOCUS_KST_NR_OF_MITARBEITER    DECIMAL(65535,2),
+    NR_OF_ACC_KOSTENSTELLE_TODAY   DECIMAL(65535,2),
+    LIMIT_PEE_NUMMER               VARCHAR(255),
+    SYS_DATETIME                   TIMESTAMP,
+    WEEKDAY                        VARCHAR(255),
+    ZEITART_NUMMER                 VARCHAR(255),
+    MIN_ACTION_DATE                DATE,
+    MAX_ACTION_DATE                DATE,
+    MIN_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    MAX_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    ACTION_DATE_INTEVAL_DAYS       DECIMAL(65535,2),
+    BW_DAUER_MS                    DECIMAL(65535,2),
+    BW_MODE                        VARCHAR(255),
+    PLANUNGEN_GENERIEREN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_GENERIEREN_DAUER_MS  DECIMAL(65535,2),
+    SOLL_GLEICH_IST_TAGE           DECIMAL(65535,2),
+    SOLL_GLEICH_IST_DAUER_MS       DECIMAL(65535,2),
+    BUCHUNGSLAUF_TAGE              DECIMAL(65535,2),
+    BUCHUNGSLAUF_DAUER_MS          DECIMAL(65535,2),
+    KONTOLAUF_TAGE                 DECIMAL(65535,2),
+    KONTOLAUF_DAUER_MS             DECIMAL(65535,2),
+    KONTOLAUF_ITERATIONEN          DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_DAUER_MS  DECIMAL(65535,2),
+    FORCE_PLANUNG_NEURECHNEN       TINYINT CHECK(FORCE_PLANUNG_NEURECHNEN = 1 || FORCE_PLANUNG_NEURECHNEN = 0),
+    ZEITART_REGEL_ENFORCM_ANZAHL   DECIMAL(65535,2),
+    ZEITART_REGEL_ENFORCM_DAUER_MS DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_ANZAHL       DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_DAUER_MS     DECIMAL(65535,2),
+    SYSTEM_CPU_LOAD                DECIMAL(65535,2),
+    PROCESS_CPU_LOAD               DECIMAL(65535,2),
+    SYSTEM_LOAD_AVERAGE            DECIMAL(65535,2),
+    ZEBRA_VERSION                  VARCHAR(255),
+    JAVA_VERSION                   VARCHAR(255),
+    PAGE_LOADS_PER_SECOND          DECIMAL(65535,2),
+    ACTIVE_SESSIONS_1              DECIMAL(65535,2),
+    ACTIVE_SESSIONS_5              DECIMAL(65535,2),
+    REAL_SERVER_TIME               TINYINT CHECK(REAL_SERVER_TIME = 1 || REAL_SERVER_TIME = 0),
+    NAVIGATION_TIME_RECEIVED       TINYINT CHECK(NAVIGATION_TIME_RECEIVED = 1 || NAVIGATION_TIME_RECEIVED = 0),
+    NAVIGATION_START               DECIMAL(65535,2),
+    UNLOAD_EVENT_START             DECIMAL(65535,2),
+    UNLOAD_EVENT_END               DECIMAL(65535,2),
+    UNLOAD_EVENT_DURATION          DECIMAL(65535,2),
+    REDIRECT_START                 DECIMAL(65535,2),
+    REDIRECT_END                   DECIMAL(65535,2),
+    REDIRECT_DURATION              DECIMAL(65535,2),
+    FETCH_START                    DECIMAL(65535,2),
+    DOMAIN_LOOKUP_START            DECIMAL(65535,2),
+    DOMAIN_LOOKUP_END              DECIMAL(65535,2),
+    DOMAIN_LOOKUP_DURATION         DECIMAL(65535,2),
+    CONNECT_START                  DECIMAL(65535,2),
+    CONNECT_END                    DECIMAL(65535,2),
+    CONNECT_DURATION               DECIMAL(65535,2),
+    REQUEST_START                  DECIMAL(65535,2),
+    RESPONSE_START                 DECIMAL(65535,2),
+    RESPONSE_END                   DECIMAL(65535,2),
+    RESPONSE_DURATION              DECIMAL(65535,2),
+    REQUEST_TO_RESPONSE_DURATION   DECIMAL(65535,2),
+    DOM_LOADING                    DECIMAL(65535,2),
+    DOM_INTERACTIVE                DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_START DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_END   DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT       DECIMAL(65535,2),
+    DOM_COMPLETE_DURATION          DECIMAL(65535,2),
+    LOAD_EVENT_START               DECIMAL(65535,2),
+    LOAD_EVENT_END                 DECIMAL(65535,2),
+    LOAD_EVENT_DURATION            DECIMAL(65535,2),
+    LATENCY_DURATION               DECIMAL(65535,2),
+    PAGE_LOAD_DURATION             DECIMAL(65535,2),
+    TOTAL_TIME_DURATION            DECIMAL(65535,2),
+    MS_FIRST_PAINT                 DECIMAL(65535,2),
+    MS_FIRST_PAINT_NAVSTARTDUR_MS  DECIMAL(65535,2),
+    MS_FIRST_PAINT_LOAD_ENDDUR_MS  DECIMAL(65535,2),
+    TYPE_NAME                      VARCHAR(255),
+    REDIRECT_COUNT                 DECIMAL(65535,2),
+    HASH 						   CHAR(64)
+  )
+10:09:18.390 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 1
+10:09:18.391 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.391 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.392 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.392 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 2 - Create cpu table
+10:09:18.393 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE CPU_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    CPU_USAGE       DECIMAL(65535,2),
+    HASH 			CHAR(64)
+  )
+10:09:18.393 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE CPU_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    CPU_USAGE       DECIMAL(65535,2),
+    HASH 			CHAR(64)
+  )
+10:09:18.394 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 2
+10:09:18.394 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.395 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.395 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.396 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 3 - Create memory table
+10:09:18.396 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE MEMORY_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    TOTAL_HEAP 		DECIMAL(65535,2),
+	FREE_HEAP		DECIMAL(65535,2),
+	HASH 			CHAR(64)
+  )
+10:09:18.396 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE MEMORY_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    TOTAL_HEAP 		DECIMAL(65535,2),
+	FREE_HEAP		DECIMAL(65535,2),
+	HASH 			CHAR(64)
+  )
+10:09:18.397 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 3
+10:09:18.398 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.398 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.399 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.400 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 4 - Create imported file table
+10:09:18.401 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE IMPORTED_FILE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    STATUS          VARCHAR(255),
+    IMPORT_DATETIME TIMESTAMP,
+    FILENAME        VARCHAR(255) NOT NULL,
+    STACKTRACE		CLOB,
+    CONSTRAINT UNIQUE_FILE UNIQUE (CLIENT, ENVIRONMENT, FILENAME)
+  )
+10:09:18.401 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE IMPORTED_FILE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    STATUS          VARCHAR(255),
+    IMPORT_DATETIME TIMESTAMP,
+    FILENAME        VARCHAR(255) NOT NULL,
+    STACKTRACE		CLOB,
+    CONSTRAINT UNIQUE_FILE UNIQUE (CLIENT, ENVIRONMENT, FILENAME)
+  )
+10:09:18.402 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 4
+10:09:18.403 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.404 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.405 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.406 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 5 - Create events table
+10:09:18.407 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE EVENTS 
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR2(255) NOT NULL,
+    ENVIRONMENT     VARCHAR2(255) NOT NULL,
+    DATUM           DATE, 
+    "TYPE"          VARCHAR2(255), 
+    BESCHREIBUNG    VARCHAR2(255)
+  )
+10:09:18.407 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 11: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('31.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.407 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 13: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('05.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.407 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 15: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('16.02.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.407 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE EVENTS 
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR2(255) NOT NULL,
+    ENVIRONMENT     VARCHAR2(255) NOT NULL,
+    DATUM           DATE, 
+    "TYPE"          VARCHAR2(255), 
+    BESCHREIBUNG    VARCHAR2(255)
+  )
+10:09:18.408 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('31.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.408 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('05.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.409 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('16.02.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.409 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 5
+10:09:18.410 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.410 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.411 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.412 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Successfully applied 5 migrations to schema "PUBLIC" (execution time 00:00.031s).
+10:09:18.416 [Test worker] DEBUG c.m.query.sql.dml.SQLInsertClause - insert into CPU_USAGE (CLIENT, CPU_USAGE, SYS_DATETIME, ENVIRONMENT, HASH) values (?, ?, ?, ?, ?)
+10:09:18.424 [Test worker] DEBUG c.mysema.query.sql.AbstractSQLQuery - select CPU_USAGE.HASH from CPU_USAGE CPU_USAGE where CPU_USAGE.CLIENT = ? and CPU_USAGE.ENVIRONMENT = ? and CPU_USAGE.SYS_DATETIME between ? and ?
+10:09:18.427 [Test worker] INFO  o.f.c.i.dbsupport.DbSupportFactory - Database: jdbc:h2:mem:test (H2 1.4)
+10:09:18.427 [Test worker] DEBUG org.flywaydb.core.Flyway - DDL Transactions Supported: false
+10:09:18.427 [Test worker] DEBUG org.flywaydb.core.Flyway - Schema: PUBLIC
+10:09:18.427 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning for classpath resources at 'db/migration/h2' (Prefix: '', Suffix: '.sql')
+10:09:18.428 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning URL: file:/C:/Workspace/ergon.zebra/zebra-utils/monitoring/monitoring-data/build/resources/main/db/migration/h2
+10:09:18.428 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - JBoss VFS v2 available: false
+10:09:18.428 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\
+10:09:18.428 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning for resources in path: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\db\migration\h2 (db/migration/h2)
+10:09:18.428 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V1__Create_profiling_table.sql
+10:09:18.428 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V2__Create_cpu_table.sql
+10:09:18.428 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V3__Create_memory_table.sql
+10:09:18.428 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V4__Create_imported_file_table.sql
+10:09:18.428 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V5__Create_events_table.sql
+10:09:18.429 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - Spring Jdbc available: false
+10:09:18.429 [Test worker] DEBUG o.f.core.internal.command.DbValidate - Validating migrations ...
+10:09:18.429 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning for classpath resources at 'db/migration/h2' (Prefix: 'V', Suffix: '.sql')
+10:09:18.429 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning URL: file:/C:/Workspace/ergon.zebra/zebra-utils/monitoring/monitoring-data/build/resources/main/db/migration/h2
+10:09:18.429 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - JBoss VFS v2 available: false
+10:09:18.429 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\
+10:09:18.429 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning for resources in path: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\db\migration\h2 (db/migration/h2)
+10:09:18.430 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V1__Create_profiling_table.sql
+10:09:18.430 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V2__Create_cpu_table.sql
+10:09:18.430 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V3__Create_memory_table.sql
+10:09:18.430 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V4__Create_imported_file_table.sql
+10:09:18.430 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V5__Create_events_table.sql
+10:09:18.431 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning for classes at 'db/migration/h2' (Implementing: 'org.flywaydb.core.api.migration.jdbc.JdbcMigration')
+10:09:18.431 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning URL: file:/C:/Workspace/ergon.zebra/zebra-utils/monitoring/monitoring-data/build/resources/main/db/migration/h2
+10:09:18.431 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - JBoss VFS v2 available: false
+10:09:18.431 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\
+10:09:18.431 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning for resources in path: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\db\migration\h2 (db/migration/h2)
+10:09:18.432 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V1__Create_profiling_table.sql (filename: V1__Create_profiling_table.sql)
+10:09:18.432 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V2__Create_cpu_table.sql (filename: V2__Create_cpu_table.sql)
+10:09:18.432 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V3__Create_memory_table.sql (filename: V3__Create_memory_table.sql)
+10:09:18.432 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V4__Create_imported_file_table.sql (filename: V4__Create_imported_file_table.sql)
+10:09:18.432 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V5__Create_events_table.sql (filename: V5__Create_events_table.sql)
+10:09:18.432 [Test worker] INFO  o.f.core.internal.command.DbValidate - Validated 5 migrations (execution time 00:00.003s)
+10:09:18.433 [Test worker] DEBUG o.f.core.internal.command.DbSchemas - Schema "PUBLIC" already exists. Skipping schema creation.
+10:09:18.434 [Test worker] INFO  o.f.c.i.m.MetaDataTableImpl - Creating Metadata table: "PUBLIC"."schema_version"
+10:09:18.435 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 17: CREATE TABLE "PUBLIC"."schema_version" (
+    "version_rank" INT NOT NULL,
+    "installed_rank" INT NOT NULL,
+    "version" VARCHAR(50) NOT NULL,
+    "description" VARCHAR(200) NOT NULL,
+    "type" VARCHAR(20) NOT NULL,
+    "script" VARCHAR(1000) NOT NULL,
+    "checksum" INT,
+    "installed_by" VARCHAR(100) NOT NULL,
+    "installed_on" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "execution_time" INT NOT NULL,
+    "success" BOOLEAN NOT NULL
+)
+10:09:18.435 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 30: ALTER TABLE "PUBLIC"."schema_version" ADD CONSTRAINT "schema_version_pk" PRIMARY KEY ("version")
+10:09:18.435 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 32: CREATE INDEX "PUBLIC"."schema_version_vr_idx" ON "PUBLIC"."schema_version" ("version_rank")
+10:09:18.435 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 33: CREATE INDEX "PUBLIC"."schema_version_ir_idx" ON "PUBLIC"."schema_version" ("installed_rank")
+10:09:18.435 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 34: CREATE INDEX "PUBLIC"."schema_version_s_idx" ON "PUBLIC"."schema_version" ("success")
+10:09:18.435 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE "PUBLIC"."schema_version" (
+    "version_rank" INT NOT NULL,
+    "installed_rank" INT NOT NULL,
+    "version" VARCHAR(50) NOT NULL,
+    "description" VARCHAR(200) NOT NULL,
+    "type" VARCHAR(20) NOT NULL,
+    "script" VARCHAR(1000) NOT NULL,
+    "checksum" INT,
+    "installed_by" VARCHAR(100) NOT NULL,
+    "installed_on" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "execution_time" INT NOT NULL,
+    "success" BOOLEAN NOT NULL
+)
+10:09:18.435 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: ALTER TABLE "PUBLIC"."schema_version" ADD CONSTRAINT "schema_version_pk" PRIMARY KEY ("version")
+10:09:18.436 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "PUBLIC"."schema_version_vr_idx" ON "PUBLIC"."schema_version" ("version_rank")
+10:09:18.436 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "PUBLIC"."schema_version_ir_idx" ON "PUBLIC"."schema_version" ("installed_rank")
+10:09:18.436 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "PUBLIC"."schema_version_s_idx" ON "PUBLIC"."schema_version" ("success")
+10:09:18.436 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - Metadata table "PUBLIC"."schema_version" created.
+10:09:18.436 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.436 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.437 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "PUBLIC": << Empty Schema >>
+10:09:18.437 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 1 - Create profiling table
+10:09:18.439 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE PROFILING
+  (
+    ID                             BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT                         VARCHAR(255) NOT NULL,
+    ENVIRONMENT                    VARCHAR(255) NOT NULL,
+    USECASE_ID                     VARCHAR(255),
+    SERVER_EXECUTION_TIME_MS       DECIMAL(65535,2),
+    SERVER_WAIT_TIME_MS            DECIMAL(65535,2),
+    SERVER_EXEC_NO_WAIT_TIME_MS    DECIMAL(65535,2),
+    SERVER_OVERHEAD_TIME_MS        DECIMAL(65535,2),
+    REQUEST_ID                     DECIMAL(65535,2),
+    SESSION_ID                     VARCHAR(255),
+    SESSION_AGE_IN_MINUTES         DECIMAL(65535,2),
+    USER_AGENT                     VARCHAR(255),
+    HOST                           VARCHAR(255),
+    CLIENT_IP_ADDRESS              VARCHAR(255),
+    USECASE_EXPECTS_NAV_TIME       TINYINT CHECK(USECASE_EXPECTS_NAV_TIME = 1 || USECASE_EXPECTS_NAV_TIME = 0),
+    STATEMENTS_EXECUTED            DECIMAL(65535,2),
+    TOTAL_EXECUTION_TIME_MS        DECIMAL(65535,2),
+    TOTAL_FETCH_TIME_MS            DECIMAL(65535,2),
+    TOTAL_DATABASE_TIME_MS         DECIMAL(65535,2),
+    MANDANT                        VARCHAR(255),
+    LOGIN_NAME                     VARCHAR(255),
+    FOCUS_DATE                     DATE,
+    FOCUS_DATE_MINUS_SYSTEMDATE    DECIMAL(65535,2),
+    FOCUS_KST_NUMMER               VARCHAR(255),
+    FOCUS_KST_NR_OF_MITARBEITER    DECIMAL(65535,2),
+    NR_OF_ACC_KOSTENSTELLE_TODAY   DECIMAL(65535,2),
+    LIMIT_PEE_NUMMER               VARCHAR(255),
+    SYS_DATETIME                   TIMESTAMP,
+    WEEKDAY                        VARCHAR(255),
+    ZEITART_NUMMER                 VARCHAR(255),
+    MIN_ACTION_DATE                DATE,
+    MAX_ACTION_DATE                DATE,
+    MIN_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    MAX_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    ACTION_DATE_INTEVAL_DAYS       DECIMAL(65535,2),
+    BW_DAUER_MS                    DECIMAL(65535,2),
+    BW_MODE                        VARCHAR(255),
+    PLANUNGEN_GENERIEREN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_GENERIEREN_DAUER_MS  DECIMAL(65535,2),
+    SOLL_GLEICH_IST_TAGE           DECIMAL(65535,2),
+    SOLL_GLEICH_IST_DAUER_MS       DECIMAL(65535,2),
+    BUCHUNGSLAUF_TAGE              DECIMAL(65535,2),
+    BUCHUNGSLAUF_DAUER_MS          DECIMAL(65535,2),
+    KONTOLAUF_TAGE                 DECIMAL(65535,2),
+    KONTOLAUF_DAUER_MS             DECIMAL(65535,2),
+    KONTOLAUF_ITERATIONEN          DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_DAUER_MS  DECIMAL(65535,2),
+    FORCE_PLANUNG_NEURECHNEN       TINYINT CHECK(FORCE_PLANUNG_NEURECHNEN = 1 || FORCE_PLANUNG_NEURECHNEN = 0),
+    ZEITART_REGEL_ENFORCM_ANZAHL   DECIMAL(65535,2),
+    ZEITART_REGEL_ENFORCM_DAUER_MS DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_ANZAHL       DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_DAUER_MS     DECIMAL(65535,2),
+    SYSTEM_CPU_LOAD                DECIMAL(65535,2),
+    PROCESS_CPU_LOAD               DECIMAL(65535,2),
+    SYSTEM_LOAD_AVERAGE            DECIMAL(65535,2),
+    ZEBRA_VERSION                  VARCHAR(255),
+    JAVA_VERSION                   VARCHAR(255),
+    PAGE_LOADS_PER_SECOND          DECIMAL(65535,2),
+    ACTIVE_SESSIONS_1              DECIMAL(65535,2),
+    ACTIVE_SESSIONS_5              DECIMAL(65535,2),
+    REAL_SERVER_TIME               TINYINT CHECK(REAL_SERVER_TIME = 1 || REAL_SERVER_TIME = 0),
+    NAVIGATION_TIME_RECEIVED       TINYINT CHECK(NAVIGATION_TIME_RECEIVED = 1 || NAVIGATION_TIME_RECEIVED = 0),
+    NAVIGATION_START               DECIMAL(65535,2),
+    UNLOAD_EVENT_START             DECIMAL(65535,2),
+    UNLOAD_EVENT_END               DECIMAL(65535,2),
+    UNLOAD_EVENT_DURATION          DECIMAL(65535,2),
+    REDIRECT_START                 DECIMAL(65535,2),
+    REDIRECT_END                   DECIMAL(65535,2),
+    REDIRECT_DURATION              DECIMAL(65535,2),
+    FETCH_START                    DECIMAL(65535,2),
+    DOMAIN_LOOKUP_START            DECIMAL(65535,2),
+    DOMAIN_LOOKUP_END              DECIMAL(65535,2),
+    DOMAIN_LOOKUP_DURATION         DECIMAL(65535,2),
+    CONNECT_START                  DECIMAL(65535,2),
+    CONNECT_END                    DECIMAL(65535,2),
+    CONNECT_DURATION               DECIMAL(65535,2),
+    REQUEST_START                  DECIMAL(65535,2),
+    RESPONSE_START                 DECIMAL(65535,2),
+    RESPONSE_END                   DECIMAL(65535,2),
+    RESPONSE_DURATION              DECIMAL(65535,2),
+    REQUEST_TO_RESPONSE_DURATION   DECIMAL(65535,2),
+    DOM_LOADING                    DECIMAL(65535,2),
+    DOM_INTERACTIVE                DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_START DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_END   DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT       DECIMAL(65535,2),
+    DOM_COMPLETE_DURATION          DECIMAL(65535,2),
+    LOAD_EVENT_START               DECIMAL(65535,2),
+    LOAD_EVENT_END                 DECIMAL(65535,2),
+    LOAD_EVENT_DURATION            DECIMAL(65535,2),
+    LATENCY_DURATION               DECIMAL(65535,2),
+    PAGE_LOAD_DURATION             DECIMAL(65535,2),
+    TOTAL_TIME_DURATION            DECIMAL(65535,2),
+    MS_FIRST_PAINT                 DECIMAL(65535,2),
+    MS_FIRST_PAINT_NAVSTARTDUR_MS  DECIMAL(65535,2),
+    MS_FIRST_PAINT_LOAD_ENDDUR_MS  DECIMAL(65535,2),
+    TYPE_NAME                      VARCHAR(255),
+    REDIRECT_COUNT                 DECIMAL(65535,2),
+    HASH 						   CHAR(64)
+  )
+10:09:18.439 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE PROFILING
+  (
+    ID                             BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT                         VARCHAR(255) NOT NULL,
+    ENVIRONMENT                    VARCHAR(255) NOT NULL,
+    USECASE_ID                     VARCHAR(255),
+    SERVER_EXECUTION_TIME_MS       DECIMAL(65535,2),
+    SERVER_WAIT_TIME_MS            DECIMAL(65535,2),
+    SERVER_EXEC_NO_WAIT_TIME_MS    DECIMAL(65535,2),
+    SERVER_OVERHEAD_TIME_MS        DECIMAL(65535,2),
+    REQUEST_ID                     DECIMAL(65535,2),
+    SESSION_ID                     VARCHAR(255),
+    SESSION_AGE_IN_MINUTES         DECIMAL(65535,2),
+    USER_AGENT                     VARCHAR(255),
+    HOST                           VARCHAR(255),
+    CLIENT_IP_ADDRESS              VARCHAR(255),
+    USECASE_EXPECTS_NAV_TIME       TINYINT CHECK(USECASE_EXPECTS_NAV_TIME = 1 || USECASE_EXPECTS_NAV_TIME = 0),
+    STATEMENTS_EXECUTED            DECIMAL(65535,2),
+    TOTAL_EXECUTION_TIME_MS        DECIMAL(65535,2),
+    TOTAL_FETCH_TIME_MS            DECIMAL(65535,2),
+    TOTAL_DATABASE_TIME_MS         DECIMAL(65535,2),
+    MANDANT                        VARCHAR(255),
+    LOGIN_NAME                     VARCHAR(255),
+    FOCUS_DATE                     DATE,
+    FOCUS_DATE_MINUS_SYSTEMDATE    DECIMAL(65535,2),
+    FOCUS_KST_NUMMER               VARCHAR(255),
+    FOCUS_KST_NR_OF_MITARBEITER    DECIMAL(65535,2),
+    NR_OF_ACC_KOSTENSTELLE_TODAY   DECIMAL(65535,2),
+    LIMIT_PEE_NUMMER               VARCHAR(255),
+    SYS_DATETIME                   TIMESTAMP,
+    WEEKDAY                        VARCHAR(255),
+    ZEITART_NUMMER                 VARCHAR(255),
+    MIN_ACTION_DATE                DATE,
+    MAX_ACTION_DATE                DATE,
+    MIN_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    MAX_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    ACTION_DATE_INTEVAL_DAYS       DECIMAL(65535,2),
+    BW_DAUER_MS                    DECIMAL(65535,2),
+    BW_MODE                        VARCHAR(255),
+    PLANUNGEN_GENERIEREN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_GENERIEREN_DAUER_MS  DECIMAL(65535,2),
+    SOLL_GLEICH_IST_TAGE           DECIMAL(65535,2),
+    SOLL_GLEICH_IST_DAUER_MS       DECIMAL(65535,2),
+    BUCHUNGSLAUF_TAGE              DECIMAL(65535,2),
+    BUCHUNGSLAUF_DAUER_MS          DECIMAL(65535,2),
+    KONTOLAUF_TAGE                 DECIMAL(65535,2),
+    KONTOLAUF_DAUER_MS             DECIMAL(65535,2),
+    KONTOLAUF_ITERATIONEN          DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_DAUER_MS  DECIMAL(65535,2),
+    FORCE_PLANUNG_NEURECHNEN       TINYINT CHECK(FORCE_PLANUNG_NEURECHNEN = 1 || FORCE_PLANUNG_NEURECHNEN = 0),
+    ZEITART_REGEL_ENFORCM_ANZAHL   DECIMAL(65535,2),
+    ZEITART_REGEL_ENFORCM_DAUER_MS DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_ANZAHL       DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_DAUER_MS     DECIMAL(65535,2),
+    SYSTEM_CPU_LOAD                DECIMAL(65535,2),
+    PROCESS_CPU_LOAD               DECIMAL(65535,2),
+    SYSTEM_LOAD_AVERAGE            DECIMAL(65535,2),
+    ZEBRA_VERSION                  VARCHAR(255),
+    JAVA_VERSION                   VARCHAR(255),
+    PAGE_LOADS_PER_SECOND          DECIMAL(65535,2),
+    ACTIVE_SESSIONS_1              DECIMAL(65535,2),
+    ACTIVE_SESSIONS_5              DECIMAL(65535,2),
+    REAL_SERVER_TIME               TINYINT CHECK(REAL_SERVER_TIME = 1 || REAL_SERVER_TIME = 0),
+    NAVIGATION_TIME_RECEIVED       TINYINT CHECK(NAVIGATION_TIME_RECEIVED = 1 || NAVIGATION_TIME_RECEIVED = 0),
+    NAVIGATION_START               DECIMAL(65535,2),
+    UNLOAD_EVENT_START             DECIMAL(65535,2),
+    UNLOAD_EVENT_END               DECIMAL(65535,2),
+    UNLOAD_EVENT_DURATION          DECIMAL(65535,2),
+    REDIRECT_START                 DECIMAL(65535,2),
+    REDIRECT_END                   DECIMAL(65535,2),
+    REDIRECT_DURATION              DECIMAL(65535,2),
+    FETCH_START                    DECIMAL(65535,2),
+    DOMAIN_LOOKUP_START            DECIMAL(65535,2),
+    DOMAIN_LOOKUP_END              DECIMAL(65535,2),
+    DOMAIN_LOOKUP_DURATION         DECIMAL(65535,2),
+    CONNECT_START                  DECIMAL(65535,2),
+    CONNECT_END                    DECIMAL(65535,2),
+    CONNECT_DURATION               DECIMAL(65535,2),
+    REQUEST_START                  DECIMAL(65535,2),
+    RESPONSE_START                 DECIMAL(65535,2),
+    RESPONSE_END                   DECIMAL(65535,2),
+    RESPONSE_DURATION              DECIMAL(65535,2),
+    REQUEST_TO_RESPONSE_DURATION   DECIMAL(65535,2),
+    DOM_LOADING                    DECIMAL(65535,2),
+    DOM_INTERACTIVE                DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_START DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_END   DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT       DECIMAL(65535,2),
+    DOM_COMPLETE_DURATION          DECIMAL(65535,2),
+    LOAD_EVENT_START               DECIMAL(65535,2),
+    LOAD_EVENT_END                 DECIMAL(65535,2),
+    LOAD_EVENT_DURATION            DECIMAL(65535,2),
+    LATENCY_DURATION               DECIMAL(65535,2),
+    PAGE_LOAD_DURATION             DECIMAL(65535,2),
+    TOTAL_TIME_DURATION            DECIMAL(65535,2),
+    MS_FIRST_PAINT                 DECIMAL(65535,2),
+    MS_FIRST_PAINT_NAVSTARTDUR_MS  DECIMAL(65535,2),
+    MS_FIRST_PAINT_LOAD_ENDDUR_MS  DECIMAL(65535,2),
+    TYPE_NAME                      VARCHAR(255),
+    REDIRECT_COUNT                 DECIMAL(65535,2),
+    HASH 						   CHAR(64)
+  )
+10:09:18.440 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 1
+10:09:18.441 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.442 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.442 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.443 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 2 - Create cpu table
+10:09:18.443 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE CPU_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    CPU_USAGE       DECIMAL(65535,2),
+    HASH 			CHAR(64)
+  )
+10:09:18.443 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE CPU_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    CPU_USAGE       DECIMAL(65535,2),
+    HASH 			CHAR(64)
+  )
+10:09:18.444 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 2
+10:09:18.445 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.445 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.446 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.446 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 3 - Create memory table
+10:09:18.447 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE MEMORY_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    TOTAL_HEAP 		DECIMAL(65535,2),
+	FREE_HEAP		DECIMAL(65535,2),
+	HASH 			CHAR(64)
+  )
+10:09:18.447 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE MEMORY_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    TOTAL_HEAP 		DECIMAL(65535,2),
+	FREE_HEAP		DECIMAL(65535,2),
+	HASH 			CHAR(64)
+  )
+10:09:18.448 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 3
+10:09:18.449 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.449 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.450 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.450 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 4 - Create imported file table
+10:09:18.451 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE IMPORTED_FILE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    STATUS          VARCHAR(255),
+    IMPORT_DATETIME TIMESTAMP,
+    FILENAME        VARCHAR(255) NOT NULL,
+    STACKTRACE		CLOB,
+    CONSTRAINT UNIQUE_FILE UNIQUE (CLIENT, ENVIRONMENT, FILENAME)
+  )
+10:09:18.451 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE IMPORTED_FILE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    STATUS          VARCHAR(255),
+    IMPORT_DATETIME TIMESTAMP,
+    FILENAME        VARCHAR(255) NOT NULL,
+    STACKTRACE		CLOB,
+    CONSTRAINT UNIQUE_FILE UNIQUE (CLIENT, ENVIRONMENT, FILENAME)
+  )
+10:09:18.452 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 4
+10:09:18.453 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.453 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.453 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.455 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 5 - Create events table
+10:09:18.455 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE EVENTS 
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR2(255) NOT NULL,
+    ENVIRONMENT     VARCHAR2(255) NOT NULL,
+    DATUM           DATE, 
+    "TYPE"          VARCHAR2(255), 
+    BESCHREIBUNG    VARCHAR2(255)
+  )
+10:09:18.455 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 11: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('31.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.455 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 13: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('05.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.455 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 15: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('16.02.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.455 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE EVENTS 
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR2(255) NOT NULL,
+    ENVIRONMENT     VARCHAR2(255) NOT NULL,
+    DATUM           DATE, 
+    "TYPE"          VARCHAR2(255), 
+    BESCHREIBUNG    VARCHAR2(255)
+  )
+10:09:18.456 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('31.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.456 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('05.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.457 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('16.02.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.457 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 5
+10:09:18.458 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.459 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.459 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.460 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Successfully applied 5 migrations to schema "PUBLIC" (execution time 00:00.026s).
+10:09:18.463 [Test worker] DEBUG c.m.query.sql.dml.SQLInsertClause - insert into CPU_USAGE (CLIENT, CPU_USAGE, SYS_DATETIME, ENVIRONMENT, HASH) values (?, ?, ?, ?, ?)
+10:09:18.468 [Test worker] DEBUG c.mysema.query.sql.AbstractSQLQuery - select CPU_USAGE.CLIENT, CPU_USAGE.CPU_USAGE, CPU_USAGE.ENVIRONMENT, CPU_USAGE.HASH, CPU_USAGE.ID, CPU_USAGE.SYS_DATETIME from CPU_USAGE CPU_USAGE where CPU_USAGE.ID = ? limit ?
+10:09:18.470 [Test worker] DEBUG c.mysema.query.sql.AbstractSQLQuery - select CPU_USAGE.CLIENT, CPU_USAGE.CPU_USAGE, CPU_USAGE.ENVIRONMENT, CPU_USAGE.HASH, CPU_USAGE.ID, CPU_USAGE.SYS_DATETIME from CPU_USAGE CPU_USAGE where CPU_USAGE.ID = ? limit ?
+10:09:18.475 [Test worker] INFO  o.f.c.i.dbsupport.DbSupportFactory - Database: jdbc:h2:mem:test (H2 1.4)
+10:09:18.475 [Test worker] DEBUG org.flywaydb.core.Flyway - DDL Transactions Supported: false
+10:09:18.476 [Test worker] DEBUG org.flywaydb.core.Flyway - Schema: PUBLIC
+10:09:18.476 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning for classpath resources at 'db/migration/h2' (Prefix: '', Suffix: '.sql')
+10:09:18.476 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning URL: file:/C:/Workspace/ergon.zebra/zebra-utils/monitoring/monitoring-data/build/resources/main/db/migration/h2
+10:09:18.477 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - JBoss VFS v2 available: false
+10:09:18.477 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\
+10:09:18.477 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning for resources in path: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\db\migration\h2 (db/migration/h2)
+10:09:18.477 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V1__Create_profiling_table.sql
+10:09:18.477 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V2__Create_cpu_table.sql
+10:09:18.477 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V3__Create_memory_table.sql
+10:09:18.477 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V4__Create_imported_file_table.sql
+10:09:18.477 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V5__Create_events_table.sql
+10:09:18.478 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - Spring Jdbc available: false
+10:09:18.478 [Test worker] DEBUG o.f.core.internal.command.DbValidate - Validating migrations ...
+10:09:18.478 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning for classpath resources at 'db/migration/h2' (Prefix: 'V', Suffix: '.sql')
+10:09:18.478 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning URL: file:/C:/Workspace/ergon.zebra/zebra-utils/monitoring/monitoring-data/build/resources/main/db/migration/h2
+10:09:18.478 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - JBoss VFS v2 available: false
+10:09:18.478 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\
+10:09:18.478 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning for resources in path: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\db\migration\h2 (db/migration/h2)
+10:09:18.479 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V1__Create_profiling_table.sql
+10:09:18.479 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V2__Create_cpu_table.sql
+10:09:18.479 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V3__Create_memory_table.sql
+10:09:18.479 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V4__Create_imported_file_table.sql
+10:09:18.479 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V5__Create_events_table.sql
+10:09:18.481 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning for classes at 'db/migration/h2' (Implementing: 'org.flywaydb.core.api.migration.jdbc.JdbcMigration')
+10:09:18.481 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning URL: file:/C:/Workspace/ergon.zebra/zebra-utils/monitoring/monitoring-data/build/resources/main/db/migration/h2
+10:09:18.481 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - JBoss VFS v2 available: false
+10:09:18.481 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\
+10:09:18.481 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning for resources in path: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\db\migration\h2 (db/migration/h2)
+10:09:18.482 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V1__Create_profiling_table.sql (filename: V1__Create_profiling_table.sql)
+10:09:18.482 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V2__Create_cpu_table.sql (filename: V2__Create_cpu_table.sql)
+10:09:18.482 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V3__Create_memory_table.sql (filename: V3__Create_memory_table.sql)
+10:09:18.482 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V4__Create_imported_file_table.sql (filename: V4__Create_imported_file_table.sql)
+10:09:18.482 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V5__Create_events_table.sql (filename: V5__Create_events_table.sql)
+10:09:18.483 [Test worker] INFO  o.f.core.internal.command.DbValidate - Validated 5 migrations (execution time 00:00.005s)
+10:09:18.483 [Test worker] DEBUG o.f.core.internal.command.DbSchemas - Schema "PUBLIC" already exists. Skipping schema creation.
+10:09:18.485 [Test worker] INFO  o.f.c.i.m.MetaDataTableImpl - Creating Metadata table: "PUBLIC"."schema_version"
+10:09:18.486 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 17: CREATE TABLE "PUBLIC"."schema_version" (
+    "version_rank" INT NOT NULL,
+    "installed_rank" INT NOT NULL,
+    "version" VARCHAR(50) NOT NULL,
+    "description" VARCHAR(200) NOT NULL,
+    "type" VARCHAR(20) NOT NULL,
+    "script" VARCHAR(1000) NOT NULL,
+    "checksum" INT,
+    "installed_by" VARCHAR(100) NOT NULL,
+    "installed_on" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "execution_time" INT NOT NULL,
+    "success" BOOLEAN NOT NULL
+)
+10:09:18.486 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 30: ALTER TABLE "PUBLIC"."schema_version" ADD CONSTRAINT "schema_version_pk" PRIMARY KEY ("version")
+10:09:18.486 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 32: CREATE INDEX "PUBLIC"."schema_version_vr_idx" ON "PUBLIC"."schema_version" ("version_rank")
+10:09:18.486 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 33: CREATE INDEX "PUBLIC"."schema_version_ir_idx" ON "PUBLIC"."schema_version" ("installed_rank")
+10:09:18.486 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 34: CREATE INDEX "PUBLIC"."schema_version_s_idx" ON "PUBLIC"."schema_version" ("success")
+10:09:18.486 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE "PUBLIC"."schema_version" (
+    "version_rank" INT NOT NULL,
+    "installed_rank" INT NOT NULL,
+    "version" VARCHAR(50) NOT NULL,
+    "description" VARCHAR(200) NOT NULL,
+    "type" VARCHAR(20) NOT NULL,
+    "script" VARCHAR(1000) NOT NULL,
+    "checksum" INT,
+    "installed_by" VARCHAR(100) NOT NULL,
+    "installed_on" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "execution_time" INT NOT NULL,
+    "success" BOOLEAN NOT NULL
+)
+10:09:18.487 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: ALTER TABLE "PUBLIC"."schema_version" ADD CONSTRAINT "schema_version_pk" PRIMARY KEY ("version")
+10:09:18.487 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "PUBLIC"."schema_version_vr_idx" ON "PUBLIC"."schema_version" ("version_rank")
+10:09:18.487 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "PUBLIC"."schema_version_ir_idx" ON "PUBLIC"."schema_version" ("installed_rank")
+10:09:18.488 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "PUBLIC"."schema_version_s_idx" ON "PUBLIC"."schema_version" ("success")
+10:09:18.488 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - Metadata table "PUBLIC"."schema_version" created.
+10:09:18.488 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.488 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.489 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "PUBLIC": << Empty Schema >>
+10:09:18.489 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 1 - Create profiling table
+10:09:18.491 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE PROFILING
+  (
+    ID                             BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT                         VARCHAR(255) NOT NULL,
+    ENVIRONMENT                    VARCHAR(255) NOT NULL,
+    USECASE_ID                     VARCHAR(255),
+    SERVER_EXECUTION_TIME_MS       DECIMAL(65535,2),
+    SERVER_WAIT_TIME_MS            DECIMAL(65535,2),
+    SERVER_EXEC_NO_WAIT_TIME_MS    DECIMAL(65535,2),
+    SERVER_OVERHEAD_TIME_MS        DECIMAL(65535,2),
+    REQUEST_ID                     DECIMAL(65535,2),
+    SESSION_ID                     VARCHAR(255),
+    SESSION_AGE_IN_MINUTES         DECIMAL(65535,2),
+    USER_AGENT                     VARCHAR(255),
+    HOST                           VARCHAR(255),
+    CLIENT_IP_ADDRESS              VARCHAR(255),
+    USECASE_EXPECTS_NAV_TIME       TINYINT CHECK(USECASE_EXPECTS_NAV_TIME = 1 || USECASE_EXPECTS_NAV_TIME = 0),
+    STATEMENTS_EXECUTED            DECIMAL(65535,2),
+    TOTAL_EXECUTION_TIME_MS        DECIMAL(65535,2),
+    TOTAL_FETCH_TIME_MS            DECIMAL(65535,2),
+    TOTAL_DATABASE_TIME_MS         DECIMAL(65535,2),
+    MANDANT                        VARCHAR(255),
+    LOGIN_NAME                     VARCHAR(255),
+    FOCUS_DATE                     DATE,
+    FOCUS_DATE_MINUS_SYSTEMDATE    DECIMAL(65535,2),
+    FOCUS_KST_NUMMER               VARCHAR(255),
+    FOCUS_KST_NR_OF_MITARBEITER    DECIMAL(65535,2),
+    NR_OF_ACC_KOSTENSTELLE_TODAY   DECIMAL(65535,2),
+    LIMIT_PEE_NUMMER               VARCHAR(255),
+    SYS_DATETIME                   TIMESTAMP,
+    WEEKDAY                        VARCHAR(255),
+    ZEITART_NUMMER                 VARCHAR(255),
+    MIN_ACTION_DATE                DATE,
+    MAX_ACTION_DATE                DATE,
+    MIN_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    MAX_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    ACTION_DATE_INTEVAL_DAYS       DECIMAL(65535,2),
+    BW_DAUER_MS                    DECIMAL(65535,2),
+    BW_MODE                        VARCHAR(255),
+    PLANUNGEN_GENERIEREN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_GENERIEREN_DAUER_MS  DECIMAL(65535,2),
+    SOLL_GLEICH_IST_TAGE           DECIMAL(65535,2),
+    SOLL_GLEICH_IST_DAUER_MS       DECIMAL(65535,2),
+    BUCHUNGSLAUF_TAGE              DECIMAL(65535,2),
+    BUCHUNGSLAUF_DAUER_MS          DECIMAL(65535,2),
+    KONTOLAUF_TAGE                 DECIMAL(65535,2),
+    KONTOLAUF_DAUER_MS             DECIMAL(65535,2),
+    KONTOLAUF_ITERATIONEN          DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_DAUER_MS  DECIMAL(65535,2),
+    FORCE_PLANUNG_NEURECHNEN       TINYINT CHECK(FORCE_PLANUNG_NEURECHNEN = 1 || FORCE_PLANUNG_NEURECHNEN = 0),
+    ZEITART_REGEL_ENFORCM_ANZAHL   DECIMAL(65535,2),
+    ZEITART_REGEL_ENFORCM_DAUER_MS DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_ANZAHL       DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_DAUER_MS     DECIMAL(65535,2),
+    SYSTEM_CPU_LOAD                DECIMAL(65535,2),
+    PROCESS_CPU_LOAD               DECIMAL(65535,2),
+    SYSTEM_LOAD_AVERAGE            DECIMAL(65535,2),
+    ZEBRA_VERSION                  VARCHAR(255),
+    JAVA_VERSION                   VARCHAR(255),
+    PAGE_LOADS_PER_SECOND          DECIMAL(65535,2),
+    ACTIVE_SESSIONS_1              DECIMAL(65535,2),
+    ACTIVE_SESSIONS_5              DECIMAL(65535,2),
+    REAL_SERVER_TIME               TINYINT CHECK(REAL_SERVER_TIME = 1 || REAL_SERVER_TIME = 0),
+    NAVIGATION_TIME_RECEIVED       TINYINT CHECK(NAVIGATION_TIME_RECEIVED = 1 || NAVIGATION_TIME_RECEIVED = 0),
+    NAVIGATION_START               DECIMAL(65535,2),
+    UNLOAD_EVENT_START             DECIMAL(65535,2),
+    UNLOAD_EVENT_END               DECIMAL(65535,2),
+    UNLOAD_EVENT_DURATION          DECIMAL(65535,2),
+    REDIRECT_START                 DECIMAL(65535,2),
+    REDIRECT_END                   DECIMAL(65535,2),
+    REDIRECT_DURATION              DECIMAL(65535,2),
+    FETCH_START                    DECIMAL(65535,2),
+    DOMAIN_LOOKUP_START            DECIMAL(65535,2),
+    DOMAIN_LOOKUP_END              DECIMAL(65535,2),
+    DOMAIN_LOOKUP_DURATION         DECIMAL(65535,2),
+    CONNECT_START                  DECIMAL(65535,2),
+    CONNECT_END                    DECIMAL(65535,2),
+    CONNECT_DURATION               DECIMAL(65535,2),
+    REQUEST_START                  DECIMAL(65535,2),
+    RESPONSE_START                 DECIMAL(65535,2),
+    RESPONSE_END                   DECIMAL(65535,2),
+    RESPONSE_DURATION              DECIMAL(65535,2),
+    REQUEST_TO_RESPONSE_DURATION   DECIMAL(65535,2),
+    DOM_LOADING                    DECIMAL(65535,2),
+    DOM_INTERACTIVE                DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_START DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_END   DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT       DECIMAL(65535,2),
+    DOM_COMPLETE_DURATION          DECIMAL(65535,2),
+    LOAD_EVENT_START               DECIMAL(65535,2),
+    LOAD_EVENT_END                 DECIMAL(65535,2),
+    LOAD_EVENT_DURATION            DECIMAL(65535,2),
+    LATENCY_DURATION               DECIMAL(65535,2),
+    PAGE_LOAD_DURATION             DECIMAL(65535,2),
+    TOTAL_TIME_DURATION            DECIMAL(65535,2),
+    MS_FIRST_PAINT                 DECIMAL(65535,2),
+    MS_FIRST_PAINT_NAVSTARTDUR_MS  DECIMAL(65535,2),
+    MS_FIRST_PAINT_LOAD_ENDDUR_MS  DECIMAL(65535,2),
+    TYPE_NAME                      VARCHAR(255),
+    REDIRECT_COUNT                 DECIMAL(65535,2),
+    HASH 						   CHAR(64)
+  )
+10:09:18.491 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE PROFILING
+  (
+    ID                             BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT                         VARCHAR(255) NOT NULL,
+    ENVIRONMENT                    VARCHAR(255) NOT NULL,
+    USECASE_ID                     VARCHAR(255),
+    SERVER_EXECUTION_TIME_MS       DECIMAL(65535,2),
+    SERVER_WAIT_TIME_MS            DECIMAL(65535,2),
+    SERVER_EXEC_NO_WAIT_TIME_MS    DECIMAL(65535,2),
+    SERVER_OVERHEAD_TIME_MS        DECIMAL(65535,2),
+    REQUEST_ID                     DECIMAL(65535,2),
+    SESSION_ID                     VARCHAR(255),
+    SESSION_AGE_IN_MINUTES         DECIMAL(65535,2),
+    USER_AGENT                     VARCHAR(255),
+    HOST                           VARCHAR(255),
+    CLIENT_IP_ADDRESS              VARCHAR(255),
+    USECASE_EXPECTS_NAV_TIME       TINYINT CHECK(USECASE_EXPECTS_NAV_TIME = 1 || USECASE_EXPECTS_NAV_TIME = 0),
+    STATEMENTS_EXECUTED            DECIMAL(65535,2),
+    TOTAL_EXECUTION_TIME_MS        DECIMAL(65535,2),
+    TOTAL_FETCH_TIME_MS            DECIMAL(65535,2),
+    TOTAL_DATABASE_TIME_MS         DECIMAL(65535,2),
+    MANDANT                        VARCHAR(255),
+    LOGIN_NAME                     VARCHAR(255),
+    FOCUS_DATE                     DATE,
+    FOCUS_DATE_MINUS_SYSTEMDATE    DECIMAL(65535,2),
+    FOCUS_KST_NUMMER               VARCHAR(255),
+    FOCUS_KST_NR_OF_MITARBEITER    DECIMAL(65535,2),
+    NR_OF_ACC_KOSTENSTELLE_TODAY   DECIMAL(65535,2),
+    LIMIT_PEE_NUMMER               VARCHAR(255),
+    SYS_DATETIME                   TIMESTAMP,
+    WEEKDAY                        VARCHAR(255),
+    ZEITART_NUMMER                 VARCHAR(255),
+    MIN_ACTION_DATE                DATE,
+    MAX_ACTION_DATE                DATE,
+    MIN_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    MAX_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    ACTION_DATE_INTEVAL_DAYS       DECIMAL(65535,2),
+    BW_DAUER_MS                    DECIMAL(65535,2),
+    BW_MODE                        VARCHAR(255),
+    PLANUNGEN_GENERIEREN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_GENERIEREN_DAUER_MS  DECIMAL(65535,2),
+    SOLL_GLEICH_IST_TAGE           DECIMAL(65535,2),
+    SOLL_GLEICH_IST_DAUER_MS       DECIMAL(65535,2),
+    BUCHUNGSLAUF_TAGE              DECIMAL(65535,2),
+    BUCHUNGSLAUF_DAUER_MS          DECIMAL(65535,2),
+    KONTOLAUF_TAGE                 DECIMAL(65535,2),
+    KONTOLAUF_DAUER_MS             DECIMAL(65535,2),
+    KONTOLAUF_ITERATIONEN          DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_DAUER_MS  DECIMAL(65535,2),
+    FORCE_PLANUNG_NEURECHNEN       TINYINT CHECK(FORCE_PLANUNG_NEURECHNEN = 1 || FORCE_PLANUNG_NEURECHNEN = 0),
+    ZEITART_REGEL_ENFORCM_ANZAHL   DECIMAL(65535,2),
+    ZEITART_REGEL_ENFORCM_DAUER_MS DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_ANZAHL       DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_DAUER_MS     DECIMAL(65535,2),
+    SYSTEM_CPU_LOAD                DECIMAL(65535,2),
+    PROCESS_CPU_LOAD               DECIMAL(65535,2),
+    SYSTEM_LOAD_AVERAGE            DECIMAL(65535,2),
+    ZEBRA_VERSION                  VARCHAR(255),
+    JAVA_VERSION                   VARCHAR(255),
+    PAGE_LOADS_PER_SECOND          DECIMAL(65535,2),
+    ACTIVE_SESSIONS_1              DECIMAL(65535,2),
+    ACTIVE_SESSIONS_5              DECIMAL(65535,2),
+    REAL_SERVER_TIME               TINYINT CHECK(REAL_SERVER_TIME = 1 || REAL_SERVER_TIME = 0),
+    NAVIGATION_TIME_RECEIVED       TINYINT CHECK(NAVIGATION_TIME_RECEIVED = 1 || NAVIGATION_TIME_RECEIVED = 0),
+    NAVIGATION_START               DECIMAL(65535,2),
+    UNLOAD_EVENT_START             DECIMAL(65535,2),
+    UNLOAD_EVENT_END               DECIMAL(65535,2),
+    UNLOAD_EVENT_DURATION          DECIMAL(65535,2),
+    REDIRECT_START                 DECIMAL(65535,2),
+    REDIRECT_END                   DECIMAL(65535,2),
+    REDIRECT_DURATION              DECIMAL(65535,2),
+    FETCH_START                    DECIMAL(65535,2),
+    DOMAIN_LOOKUP_START            DECIMAL(65535,2),
+    DOMAIN_LOOKUP_END              DECIMAL(65535,2),
+    DOMAIN_LOOKUP_DURATION         DECIMAL(65535,2),
+    CONNECT_START                  DECIMAL(65535,2),
+    CONNECT_END                    DECIMAL(65535,2),
+    CONNECT_DURATION               DECIMAL(65535,2),
+    REQUEST_START                  DECIMAL(65535,2),
+    RESPONSE_START                 DECIMAL(65535,2),
+    RESPONSE_END                   DECIMAL(65535,2),
+    RESPONSE_DURATION              DECIMAL(65535,2),
+    REQUEST_TO_RESPONSE_DURATION   DECIMAL(65535,2),
+    DOM_LOADING                    DECIMAL(65535,2),
+    DOM_INTERACTIVE                DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_START DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_END   DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT       DECIMAL(65535,2),
+    DOM_COMPLETE_DURATION          DECIMAL(65535,2),
+    LOAD_EVENT_START               DECIMAL(65535,2),
+    LOAD_EVENT_END                 DECIMAL(65535,2),
+    LOAD_EVENT_DURATION            DECIMAL(65535,2),
+    LATENCY_DURATION               DECIMAL(65535,2),
+    PAGE_LOAD_DURATION             DECIMAL(65535,2),
+    TOTAL_TIME_DURATION            DECIMAL(65535,2),
+    MS_FIRST_PAINT                 DECIMAL(65535,2),
+    MS_FIRST_PAINT_NAVSTARTDUR_MS  DECIMAL(65535,2),
+    MS_FIRST_PAINT_LOAD_ENDDUR_MS  DECIMAL(65535,2),
+    TYPE_NAME                      VARCHAR(255),
+    REDIRECT_COUNT                 DECIMAL(65535,2),
+    HASH 						   CHAR(64)
+  )
+10:09:18.493 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 1
+10:09:18.494 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.495 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.495 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.496 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 2 - Create cpu table
+10:09:18.497 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE CPU_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    CPU_USAGE       DECIMAL(65535,2),
+    HASH 			CHAR(64)
+  )
+10:09:18.497 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE CPU_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    CPU_USAGE       DECIMAL(65535,2),
+    HASH 			CHAR(64)
+  )
+10:09:18.498 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 2
+10:09:18.499 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.499 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.499 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.500 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 3 - Create memory table
+10:09:18.501 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE MEMORY_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    TOTAL_HEAP 		DECIMAL(65535,2),
+	FREE_HEAP		DECIMAL(65535,2),
+	HASH 			CHAR(64)
+  )
+10:09:18.501 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE MEMORY_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    TOTAL_HEAP 		DECIMAL(65535,2),
+	FREE_HEAP		DECIMAL(65535,2),
+	HASH 			CHAR(64)
+  )
+10:09:18.501 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 3
+10:09:18.502 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.503 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.503 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.504 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 4 - Create imported file table
+10:09:18.504 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE IMPORTED_FILE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    STATUS          VARCHAR(255),
+    IMPORT_DATETIME TIMESTAMP,
+    FILENAME        VARCHAR(255) NOT NULL,
+    STACKTRACE		CLOB,
+    CONSTRAINT UNIQUE_FILE UNIQUE (CLIENT, ENVIRONMENT, FILENAME)
+  )
+10:09:18.504 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE IMPORTED_FILE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    STATUS          VARCHAR(255),
+    IMPORT_DATETIME TIMESTAMP,
+    FILENAME        VARCHAR(255) NOT NULL,
+    STACKTRACE		CLOB,
+    CONSTRAINT UNIQUE_FILE UNIQUE (CLIENT, ENVIRONMENT, FILENAME)
+  )
+10:09:18.505 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 4
+10:09:18.506 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.506 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.507 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.508 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 5 - Create events table
+10:09:18.508 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE EVENTS 
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR2(255) NOT NULL,
+    ENVIRONMENT     VARCHAR2(255) NOT NULL,
+    DATUM           DATE, 
+    "TYPE"          VARCHAR2(255), 
+    BESCHREIBUNG    VARCHAR2(255)
+  )
+10:09:18.508 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 11: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('31.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.508 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 13: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('05.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.508 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 15: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('16.02.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.508 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE EVENTS 
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR2(255) NOT NULL,
+    ENVIRONMENT     VARCHAR2(255) NOT NULL,
+    DATUM           DATE, 
+    "TYPE"          VARCHAR2(255), 
+    BESCHREIBUNG    VARCHAR2(255)
+  )
+10:09:18.509 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('31.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.509 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('05.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.510 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('16.02.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.510 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 5
+10:09:18.511 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.511 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.512 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.513 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Successfully applied 5 migrations to schema "PUBLIC" (execution time 00:00.028s).
+10:09:18.514 [Test worker] DEBUG c.m.query.sql.dml.SQLInsertClause - insert into CPU_USAGE (CLIENT, CPU_USAGE, SYS_DATETIME, ENVIRONMENT, HASH) values (?, ?, ?, ?, ?)
+10:09:18.515 [Test worker] DEBUG c.mysema.query.sql.AbstractSQLQuery - select 1 from CPU_USAGE CPU_USAGE where CPU_USAGE.CLIENT = ? and CPU_USAGE.ENVIRONMENT = ? limit ?
+10:09:18.516 [Test worker] DEBUG c.mysema.query.sql.AbstractSQLQuery - select 1 from CPU_USAGE CPU_USAGE where CPU_USAGE.CLIENT = ? and CPU_USAGE.ENVIRONMENT = ? limit ?
+10:09:18.518 [Test worker] INFO  o.f.c.i.dbsupport.DbSupportFactory - Database: jdbc:h2:mem:test (H2 1.4)
+10:09:18.519 [Test worker] DEBUG org.flywaydb.core.Flyway - DDL Transactions Supported: false
+10:09:18.519 [Test worker] DEBUG org.flywaydb.core.Flyway - Schema: PUBLIC
+10:09:18.519 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning for classpath resources at 'db/migration/h2' (Prefix: '', Suffix: '.sql')
+10:09:18.519 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning URL: file:/C:/Workspace/ergon.zebra/zebra-utils/monitoring/monitoring-data/build/resources/main/db/migration/h2
+10:09:18.520 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - JBoss VFS v2 available: false
+10:09:18.520 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\
+10:09:18.520 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning for resources in path: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\db\migration\h2 (db/migration/h2)
+10:09:18.520 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V1__Create_profiling_table.sql
+10:09:18.520 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V2__Create_cpu_table.sql
+10:09:18.520 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V3__Create_memory_table.sql
+10:09:18.520 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V4__Create_imported_file_table.sql
+10:09:18.520 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V5__Create_events_table.sql
+10:09:18.520 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - Spring Jdbc available: false
+10:09:18.520 [Test worker] DEBUG o.f.core.internal.command.DbValidate - Validating migrations ...
+10:09:18.520 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning for classpath resources at 'db/migration/h2' (Prefix: 'V', Suffix: '.sql')
+10:09:18.520 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning URL: file:/C:/Workspace/ergon.zebra/zebra-utils/monitoring/monitoring-data/build/resources/main/db/migration/h2
+10:09:18.521 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - JBoss VFS v2 available: false
+10:09:18.521 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\
+10:09:18.521 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning for resources in path: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\db\migration\h2 (db/migration/h2)
+10:09:18.521 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V1__Create_profiling_table.sql
+10:09:18.521 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V2__Create_cpu_table.sql
+10:09:18.521 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V3__Create_memory_table.sql
+10:09:18.521 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V4__Create_imported_file_table.sql
+10:09:18.521 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Found resource: db/migration/h2/V5__Create_events_table.sql
+10:09:18.522 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning for classes at 'db/migration/h2' (Implementing: 'org.flywaydb.core.api.migration.jdbc.JdbcMigration')
+10:09:18.523 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Scanning URL: file:/C:/Workspace/ergon.zebra/zebra-utils/monitoring/monitoring-data/build/resources/main/db/migration/h2
+10:09:18.523 [Test worker] DEBUG o.f.c.internal.util.FeatureDetector - JBoss VFS v2 available: false
+10:09:18.523 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\
+10:09:18.523 [Test worker] DEBUG o.f.c.i.u.s.c.FileSystemClassPathLocationScanner - Scanning for resources in path: C:\Workspace\ergon.zebra\zebra-utils\monitoring\monitoring-data\build\resources\main\db\migration\h2 (db/migration/h2)
+10:09:18.523 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V1__Create_profiling_table.sql (filename: V1__Create_profiling_table.sql)
+10:09:18.523 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V2__Create_cpu_table.sql (filename: V2__Create_cpu_table.sql)
+10:09:18.523 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V3__Create_memory_table.sql (filename: V3__Create_memory_table.sql)
+10:09:18.523 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V4__Create_imported_file_table.sql (filename: V4__Create_imported_file_table.sql)
+10:09:18.523 [Test worker] DEBUG o.f.c.i.u.s.c.ClassPathScanner - Filtering out resource: db/migration/h2/V5__Create_events_table.sql (filename: V5__Create_events_table.sql)
+10:09:18.524 [Test worker] INFO  o.f.core.internal.command.DbValidate - Validated 5 migrations (execution time 00:00.004s)
+10:09:18.525 [Test worker] DEBUG o.f.core.internal.command.DbSchemas - Schema "PUBLIC" already exists. Skipping schema creation.
+10:09:18.526 [Test worker] INFO  o.f.c.i.m.MetaDataTableImpl - Creating Metadata table: "PUBLIC"."schema_version"
+10:09:18.528 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 17: CREATE TABLE "PUBLIC"."schema_version" (
+    "version_rank" INT NOT NULL,
+    "installed_rank" INT NOT NULL,
+    "version" VARCHAR(50) NOT NULL,
+    "description" VARCHAR(200) NOT NULL,
+    "type" VARCHAR(20) NOT NULL,
+    "script" VARCHAR(1000) NOT NULL,
+    "checksum" INT,
+    "installed_by" VARCHAR(100) NOT NULL,
+    "installed_on" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "execution_time" INT NOT NULL,
+    "success" BOOLEAN NOT NULL
+)
+10:09:18.528 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 30: ALTER TABLE "PUBLIC"."schema_version" ADD CONSTRAINT "schema_version_pk" PRIMARY KEY ("version")
+10:09:18.528 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 32: CREATE INDEX "PUBLIC"."schema_version_vr_idx" ON "PUBLIC"."schema_version" ("version_rank")
+10:09:18.528 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 33: CREATE INDEX "PUBLIC"."schema_version_ir_idx" ON "PUBLIC"."schema_version" ("installed_rank")
+10:09:18.528 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 34: CREATE INDEX "PUBLIC"."schema_version_s_idx" ON "PUBLIC"."schema_version" ("success")
+10:09:18.528 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE "PUBLIC"."schema_version" (
+    "version_rank" INT NOT NULL,
+    "installed_rank" INT NOT NULL,
+    "version" VARCHAR(50) NOT NULL,
+    "description" VARCHAR(200) NOT NULL,
+    "type" VARCHAR(20) NOT NULL,
+    "script" VARCHAR(1000) NOT NULL,
+    "checksum" INT,
+    "installed_by" VARCHAR(100) NOT NULL,
+    "installed_on" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "execution_time" INT NOT NULL,
+    "success" BOOLEAN NOT NULL
+)
+10:09:18.528 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: ALTER TABLE "PUBLIC"."schema_version" ADD CONSTRAINT "schema_version_pk" PRIMARY KEY ("version")
+10:09:18.529 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "PUBLIC"."schema_version_vr_idx" ON "PUBLIC"."schema_version" ("version_rank")
+10:09:18.529 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "PUBLIC"."schema_version_ir_idx" ON "PUBLIC"."schema_version" ("installed_rank")
+10:09:18.529 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "PUBLIC"."schema_version_s_idx" ON "PUBLIC"."schema_version" ("success")
+10:09:18.530 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - Metadata table "PUBLIC"."schema_version" created.
+10:09:18.530 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.530 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.531 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "PUBLIC": << Empty Schema >>
+10:09:18.531 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 1 - Create profiling table
+10:09:18.532 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE PROFILING
+  (
+    ID                             BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT                         VARCHAR(255) NOT NULL,
+    ENVIRONMENT                    VARCHAR(255) NOT NULL,
+    USECASE_ID                     VARCHAR(255),
+    SERVER_EXECUTION_TIME_MS       DECIMAL(65535,2),
+    SERVER_WAIT_TIME_MS            DECIMAL(65535,2),
+    SERVER_EXEC_NO_WAIT_TIME_MS    DECIMAL(65535,2),
+    SERVER_OVERHEAD_TIME_MS        DECIMAL(65535,2),
+    REQUEST_ID                     DECIMAL(65535,2),
+    SESSION_ID                     VARCHAR(255),
+    SESSION_AGE_IN_MINUTES         DECIMAL(65535,2),
+    USER_AGENT                     VARCHAR(255),
+    HOST                           VARCHAR(255),
+    CLIENT_IP_ADDRESS              VARCHAR(255),
+    USECASE_EXPECTS_NAV_TIME       TINYINT CHECK(USECASE_EXPECTS_NAV_TIME = 1 || USECASE_EXPECTS_NAV_TIME = 0),
+    STATEMENTS_EXECUTED            DECIMAL(65535,2),
+    TOTAL_EXECUTION_TIME_MS        DECIMAL(65535,2),
+    TOTAL_FETCH_TIME_MS            DECIMAL(65535,2),
+    TOTAL_DATABASE_TIME_MS         DECIMAL(65535,2),
+    MANDANT                        VARCHAR(255),
+    LOGIN_NAME                     VARCHAR(255),
+    FOCUS_DATE                     DATE,
+    FOCUS_DATE_MINUS_SYSTEMDATE    DECIMAL(65535,2),
+    FOCUS_KST_NUMMER               VARCHAR(255),
+    FOCUS_KST_NR_OF_MITARBEITER    DECIMAL(65535,2),
+    NR_OF_ACC_KOSTENSTELLE_TODAY   DECIMAL(65535,2),
+    LIMIT_PEE_NUMMER               VARCHAR(255),
+    SYS_DATETIME                   TIMESTAMP,
+    WEEKDAY                        VARCHAR(255),
+    ZEITART_NUMMER                 VARCHAR(255),
+    MIN_ACTION_DATE                DATE,
+    MAX_ACTION_DATE                DATE,
+    MIN_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    MAX_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    ACTION_DATE_INTEVAL_DAYS       DECIMAL(65535,2),
+    BW_DAUER_MS                    DECIMAL(65535,2),
+    BW_MODE                        VARCHAR(255),
+    PLANUNGEN_GENERIEREN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_GENERIEREN_DAUER_MS  DECIMAL(65535,2),
+    SOLL_GLEICH_IST_TAGE           DECIMAL(65535,2),
+    SOLL_GLEICH_IST_DAUER_MS       DECIMAL(65535,2),
+    BUCHUNGSLAUF_TAGE              DECIMAL(65535,2),
+    BUCHUNGSLAUF_DAUER_MS          DECIMAL(65535,2),
+    KONTOLAUF_TAGE                 DECIMAL(65535,2),
+    KONTOLAUF_DAUER_MS             DECIMAL(65535,2),
+    KONTOLAUF_ITERATIONEN          DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_DAUER_MS  DECIMAL(65535,2),
+    FORCE_PLANUNG_NEURECHNEN       TINYINT CHECK(FORCE_PLANUNG_NEURECHNEN = 1 || FORCE_PLANUNG_NEURECHNEN = 0),
+    ZEITART_REGEL_ENFORCM_ANZAHL   DECIMAL(65535,2),
+    ZEITART_REGEL_ENFORCM_DAUER_MS DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_ANZAHL       DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_DAUER_MS     DECIMAL(65535,2),
+    SYSTEM_CPU_LOAD                DECIMAL(65535,2),
+    PROCESS_CPU_LOAD               DECIMAL(65535,2),
+    SYSTEM_LOAD_AVERAGE            DECIMAL(65535,2),
+    ZEBRA_VERSION                  VARCHAR(255),
+    JAVA_VERSION                   VARCHAR(255),
+    PAGE_LOADS_PER_SECOND          DECIMAL(65535,2),
+    ACTIVE_SESSIONS_1              DECIMAL(65535,2),
+    ACTIVE_SESSIONS_5              DECIMAL(65535,2),
+    REAL_SERVER_TIME               TINYINT CHECK(REAL_SERVER_TIME = 1 || REAL_SERVER_TIME = 0),
+    NAVIGATION_TIME_RECEIVED       TINYINT CHECK(NAVIGATION_TIME_RECEIVED = 1 || NAVIGATION_TIME_RECEIVED = 0),
+    NAVIGATION_START               DECIMAL(65535,2),
+    UNLOAD_EVENT_START             DECIMAL(65535,2),
+    UNLOAD_EVENT_END               DECIMAL(65535,2),
+    UNLOAD_EVENT_DURATION          DECIMAL(65535,2),
+    REDIRECT_START                 DECIMAL(65535,2),
+    REDIRECT_END                   DECIMAL(65535,2),
+    REDIRECT_DURATION              DECIMAL(65535,2),
+    FETCH_START                    DECIMAL(65535,2),
+    DOMAIN_LOOKUP_START            DECIMAL(65535,2),
+    DOMAIN_LOOKUP_END              DECIMAL(65535,2),
+    DOMAIN_LOOKUP_DURATION         DECIMAL(65535,2),
+    CONNECT_START                  DECIMAL(65535,2),
+    CONNECT_END                    DECIMAL(65535,2),
+    CONNECT_DURATION               DECIMAL(65535,2),
+    REQUEST_START                  DECIMAL(65535,2),
+    RESPONSE_START                 DECIMAL(65535,2),
+    RESPONSE_END                   DECIMAL(65535,2),
+    RESPONSE_DURATION              DECIMAL(65535,2),
+    REQUEST_TO_RESPONSE_DURATION   DECIMAL(65535,2),
+    DOM_LOADING                    DECIMAL(65535,2),
+    DOM_INTERACTIVE                DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_START DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_END   DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT       DECIMAL(65535,2),
+    DOM_COMPLETE_DURATION          DECIMAL(65535,2),
+    LOAD_EVENT_START               DECIMAL(65535,2),
+    LOAD_EVENT_END                 DECIMAL(65535,2),
+    LOAD_EVENT_DURATION            DECIMAL(65535,2),
+    LATENCY_DURATION               DECIMAL(65535,2),
+    PAGE_LOAD_DURATION             DECIMAL(65535,2),
+    TOTAL_TIME_DURATION            DECIMAL(65535,2),
+    MS_FIRST_PAINT                 DECIMAL(65535,2),
+    MS_FIRST_PAINT_NAVSTARTDUR_MS  DECIMAL(65535,2),
+    MS_FIRST_PAINT_LOAD_ENDDUR_MS  DECIMAL(65535,2),
+    TYPE_NAME                      VARCHAR(255),
+    REDIRECT_COUNT                 DECIMAL(65535,2),
+    HASH 						   CHAR(64)
+  )
+10:09:18.532 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE PROFILING
+  (
+    ID                             BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT                         VARCHAR(255) NOT NULL,
+    ENVIRONMENT                    VARCHAR(255) NOT NULL,
+    USECASE_ID                     VARCHAR(255),
+    SERVER_EXECUTION_TIME_MS       DECIMAL(65535,2),
+    SERVER_WAIT_TIME_MS            DECIMAL(65535,2),
+    SERVER_EXEC_NO_WAIT_TIME_MS    DECIMAL(65535,2),
+    SERVER_OVERHEAD_TIME_MS        DECIMAL(65535,2),
+    REQUEST_ID                     DECIMAL(65535,2),
+    SESSION_ID                     VARCHAR(255),
+    SESSION_AGE_IN_MINUTES         DECIMAL(65535,2),
+    USER_AGENT                     VARCHAR(255),
+    HOST                           VARCHAR(255),
+    CLIENT_IP_ADDRESS              VARCHAR(255),
+    USECASE_EXPECTS_NAV_TIME       TINYINT CHECK(USECASE_EXPECTS_NAV_TIME = 1 || USECASE_EXPECTS_NAV_TIME = 0),
+    STATEMENTS_EXECUTED            DECIMAL(65535,2),
+    TOTAL_EXECUTION_TIME_MS        DECIMAL(65535,2),
+    TOTAL_FETCH_TIME_MS            DECIMAL(65535,2),
+    TOTAL_DATABASE_TIME_MS         DECIMAL(65535,2),
+    MANDANT                        VARCHAR(255),
+    LOGIN_NAME                     VARCHAR(255),
+    FOCUS_DATE                     DATE,
+    FOCUS_DATE_MINUS_SYSTEMDATE    DECIMAL(65535,2),
+    FOCUS_KST_NUMMER               VARCHAR(255),
+    FOCUS_KST_NR_OF_MITARBEITER    DECIMAL(65535,2),
+    NR_OF_ACC_KOSTENSTELLE_TODAY   DECIMAL(65535,2),
+    LIMIT_PEE_NUMMER               VARCHAR(255),
+    SYS_DATETIME                   TIMESTAMP,
+    WEEKDAY                        VARCHAR(255),
+    ZEITART_NUMMER                 VARCHAR(255),
+    MIN_ACTION_DATE                DATE,
+    MAX_ACTION_DATE                DATE,
+    MIN_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    MAX_ACTION_DATE_MINUS_SYSDAYS  DECIMAL(65535,2),
+    ACTION_DATE_INTEVAL_DAYS       DECIMAL(65535,2),
+    BW_DAUER_MS                    DECIMAL(65535,2),
+    BW_MODE                        VARCHAR(255),
+    PLANUNGEN_GENERIEREN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_GENERIEREN_DAUER_MS  DECIMAL(65535,2),
+    SOLL_GLEICH_IST_TAGE           DECIMAL(65535,2),
+    SOLL_GLEICH_IST_DAUER_MS       DECIMAL(65535,2),
+    BUCHUNGSLAUF_TAGE              DECIMAL(65535,2),
+    BUCHUNGSLAUF_DAUER_MS          DECIMAL(65535,2),
+    KONTOLAUF_TAGE                 DECIMAL(65535,2),
+    KONTOLAUF_DAUER_MS             DECIMAL(65535,2),
+    KONTOLAUF_ITERATIONEN          DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_TAGE      DECIMAL(65535,2),
+    PLANUNGEN_NEURECHNEN_DAUER_MS  DECIMAL(65535,2),
+    FORCE_PLANUNG_NEURECHNEN       TINYINT CHECK(FORCE_PLANUNG_NEURECHNEN = 1 || FORCE_PLANUNG_NEURECHNEN = 0),
+    ZEITART_REGEL_ENFORCM_ANZAHL   DECIMAL(65535,2),
+    ZEITART_REGEL_ENFORCM_DAUER_MS DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_ANZAHL       DECIMAL(65535,2),
+    WOCHE_NEU_RECHNEN_DAUER_MS     DECIMAL(65535,2),
+    SYSTEM_CPU_LOAD                DECIMAL(65535,2),
+    PROCESS_CPU_LOAD               DECIMAL(65535,2),
+    SYSTEM_LOAD_AVERAGE            DECIMAL(65535,2),
+    ZEBRA_VERSION                  VARCHAR(255),
+    JAVA_VERSION                   VARCHAR(255),
+    PAGE_LOADS_PER_SECOND          DECIMAL(65535,2),
+    ACTIVE_SESSIONS_1              DECIMAL(65535,2),
+    ACTIVE_SESSIONS_5              DECIMAL(65535,2),
+    REAL_SERVER_TIME               TINYINT CHECK(REAL_SERVER_TIME = 1 || REAL_SERVER_TIME = 0),
+    NAVIGATION_TIME_RECEIVED       TINYINT CHECK(NAVIGATION_TIME_RECEIVED = 1 || NAVIGATION_TIME_RECEIVED = 0),
+    NAVIGATION_START               DECIMAL(65535,2),
+    UNLOAD_EVENT_START             DECIMAL(65535,2),
+    UNLOAD_EVENT_END               DECIMAL(65535,2),
+    UNLOAD_EVENT_DURATION          DECIMAL(65535,2),
+    REDIRECT_START                 DECIMAL(65535,2),
+    REDIRECT_END                   DECIMAL(65535,2),
+    REDIRECT_DURATION              DECIMAL(65535,2),
+    FETCH_START                    DECIMAL(65535,2),
+    DOMAIN_LOOKUP_START            DECIMAL(65535,2),
+    DOMAIN_LOOKUP_END              DECIMAL(65535,2),
+    DOMAIN_LOOKUP_DURATION         DECIMAL(65535,2),
+    CONNECT_START                  DECIMAL(65535,2),
+    CONNECT_END                    DECIMAL(65535,2),
+    CONNECT_DURATION               DECIMAL(65535,2),
+    REQUEST_START                  DECIMAL(65535,2),
+    RESPONSE_START                 DECIMAL(65535,2),
+    RESPONSE_END                   DECIMAL(65535,2),
+    RESPONSE_DURATION              DECIMAL(65535,2),
+    REQUEST_TO_RESPONSE_DURATION   DECIMAL(65535,2),
+    DOM_LOADING                    DECIMAL(65535,2),
+    DOM_INTERACTIVE                DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_START DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT_END   DECIMAL(65535,2),
+    DOM_CONTENT_LOADED_EVENT       DECIMAL(65535,2),
+    DOM_COMPLETE_DURATION          DECIMAL(65535,2),
+    LOAD_EVENT_START               DECIMAL(65535,2),
+    LOAD_EVENT_END                 DECIMAL(65535,2),
+    LOAD_EVENT_DURATION            DECIMAL(65535,2),
+    LATENCY_DURATION               DECIMAL(65535,2),
+    PAGE_LOAD_DURATION             DECIMAL(65535,2),
+    TOTAL_TIME_DURATION            DECIMAL(65535,2),
+    MS_FIRST_PAINT                 DECIMAL(65535,2),
+    MS_FIRST_PAINT_NAVSTARTDUR_MS  DECIMAL(65535,2),
+    MS_FIRST_PAINT_LOAD_ENDDUR_MS  DECIMAL(65535,2),
+    TYPE_NAME                      VARCHAR(255),
+    REDIRECT_COUNT                 DECIMAL(65535,2),
+    HASH 						   CHAR(64)
+  )
+10:09:18.534 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 1
+10:09:18.535 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.536 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.536 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.537 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 2 - Create cpu table
+10:09:18.537 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE CPU_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    CPU_USAGE       DECIMAL(65535,2),
+    HASH 			CHAR(64)
+  )
+10:09:18.537 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE CPU_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    CPU_USAGE       DECIMAL(65535,2),
+    HASH 			CHAR(64)
+  )
+10:09:18.538 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 2
+10:09:18.539 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.539 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.540 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.540 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 3 - Create memory table
+10:09:18.541 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE MEMORY_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    TOTAL_HEAP 		DECIMAL(65535,2),
+	FREE_HEAP		DECIMAL(65535,2),
+	HASH 			CHAR(64)
+  )
+10:09:18.541 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE MEMORY_USAGE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    SYS_DATETIME    TIMESTAMP,
+    TOTAL_HEAP 		DECIMAL(65535,2),
+	FREE_HEAP		DECIMAL(65535,2),
+	HASH 			CHAR(64)
+  )
+10:09:18.541 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 3
+10:09:18.542 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.542 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.543 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.543 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 4 - Create imported file table
+10:09:18.544 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE IMPORTED_FILE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    STATUS          VARCHAR(255),
+    IMPORT_DATETIME TIMESTAMP,
+    FILENAME        VARCHAR(255) NOT NULL,
+    STACKTRACE		CLOB,
+    CONSTRAINT UNIQUE_FILE UNIQUE (CLIENT, ENVIRONMENT, FILENAME)
+  )
+10:09:18.544 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE IMPORTED_FILE
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR(255) NOT NULL,
+    ENVIRONMENT     VARCHAR(255) NOT NULL,
+    STATUS          VARCHAR(255),
+    IMPORT_DATETIME TIMESTAMP,
+    FILENAME        VARCHAR(255) NOT NULL,
+    STACKTRACE		CLOB,
+    CONSTRAINT UNIQUE_FILE UNIQUE (CLIENT, ENVIRONMENT, FILENAME)
+  )
+10:09:18.544 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 4
+10:09:18.545 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.546 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.546 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.546 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version 5 - Create events table
+10:09:18.547 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 1: CREATE TABLE EVENTS 
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR2(255) NOT NULL,
+    ENVIRONMENT     VARCHAR2(255) NOT NULL,
+    DATUM           DATE, 
+    "TYPE"          VARCHAR2(255), 
+    BESCHREIBUNG    VARCHAR2(255)
+  )
+10:09:18.547 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 11: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('31.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.547 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 13: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('05.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.547 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Found statement at line 15: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('16.02.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.547 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE EVENTS 
+  (
+    ID              BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CLIENT          VARCHAR2(255) NOT NULL,
+    ENVIRONMENT     VARCHAR2(255) NOT NULL,
+    DATUM           DATE, 
+    "TYPE"          VARCHAR2(255), 
+    BESCHREIBUNG    VARCHAR2(255)
+  )
+10:09:18.548 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('31.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.548 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('05.01.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.549 [Test worker] DEBUG o.f.c.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO EVENTS (CLIENT, ENVIRONMENT, DATUM, TYPE, BESCHREIBUNG) 
+  values ('Coop', 'pjazz', parsedatetime('16.02.2015','DD.MM.YYYY'), 'ignore_days', '100% CPU')
+10:09:18.549 [Test worker] DEBUG o.f.core.internal.command.DbMigrate - Successfully completed and committed migration of schema "PUBLIC" to version 5
+10:09:18.550 [Test worker] DEBUG o.f.c.i.m.MetaDataTableImpl - MetaData table "PUBLIC"."schema_version" successfully updated to reflect changes
+10:09:18.550 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Locking table "PUBLIC"."schema_version"...
+10:09:18.550 [Test worker] DEBUG o.f.core.internal.dbsupport.Table - Lock acquired for table "PUBLIC"."schema_version"
+10:09:18.551 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Successfully applied 5 migrations to schema "PUBLIC" (execution time 00:00.025s).
+10:09:18.554 [Test worker] DEBUG c.m.query.sql.dml.SQLInsertClause - insert into CPU_USAGE (CLIENT, CPU_USAGE, SYS_DATETIME, ENVIRONMENT, HASH) values (?, ?, ?, ?, ?)
+10:09:18.562 [Test worker] DEBUG c.mysema.query.sql.AbstractSQLQuery - select CPU_USAGE.ID, CPU_USAGE.SYS_DATETIME, CPU_USAGE.CPU_USAGE from CPU_USAGE CPU_USAGE where CPU_USAGE.ID in (select CPU_USAGE.ID from CPU_USAGE CPU_USAGE where CPU_USAGE.ID between ? and ?) and CPU_USAGE.CLIENT = ? and CPU_USAGE.ENVIRONMENT = ? order by CPU_USAGE.ID asc
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

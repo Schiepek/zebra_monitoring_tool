@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ch.ergon.zebra.monitoring.service.memory.MemoryUsageServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2015-05-29T08:09:32" hostname="SESA" time="0.002">
+  <properties/>
+  <testcase name="testMemoryUsageImport" classname="ch.ergon.zebra.monitoring.service.memory.MemoryUsageServiceTest" time="0.002"/>
+  <system-out><![CDATA[10:09:32.601 [Test worker] INFO  c.e.z.m.s.memory.MemoryUsageService -   Processing source: PathSource [name=sample_memory_usage.log]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

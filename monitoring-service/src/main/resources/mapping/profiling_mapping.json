@@ -1,0 +1,68 @@
+{
+    "profiling" : {
+        "properties" : {            	
+            "id" : {
+            	"type" : "integer",
+            	"stored" : "true",
+				"index" : "not_analyzed"
+			},
+			"focusDate" : {
+            	"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"focusKstNummer" : {
+            	"type" : "string",
+				"index" : "not_analyzed",
+				"doc_values" : "true"
+			},
+			"serverExecutionTimeMs" : {
+            	"type" : "double"
+			},
+			"totalTimeDuration" : {
+            	"type" : "double"
+			},
+			"latencyDuration" : {
+            	"type" : "double"
+			},
+			"pageLoadDuration" : {
+            	"type" : "double"
+			},
+			"userAgent" : {
+            	"type" : "string",
+				"index" : "not_analyzed",
+				"doc_values" : "true"
+			},
+			"loginName" : {
+            	"type" : "string",
+				"index" : "not_analyzed",
+				"doc_values" : "true"
+			},
+			"usecaseId" : {
+            	"type" : "string",
+				"index" : "not_analyzed",
+				"doc_values" : "true"
+			},
+			"zebraVersion" : {
+            	"type" : "string",
+				"index" : "not_analyzed",
+				"doc_values" : "true"
+			},
+			"activeSessions1" : {
+            	"type" : "double"
+			},
+			"sysDatetime" : {
+            	"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"totalExecutionTimeMs" : {
+            	"type" : "double"
+			},
+			"totalFetchTimeMs" : {
+            	"type" : "double"
+			},
+			"totalDatabaseTimeMs" : {
+            	"type" : "double"
+			}
+        }
+    }
+}

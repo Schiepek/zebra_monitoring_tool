@@ -1,0 +1,12 @@
+apply plugin: 'java'
+
+dependencies {
+	testCompile libs.junit
+	testCompile libs.hamcrest
+	testCompile libs.mockito
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+jar { manifest.attributes provider: 'gradle' }

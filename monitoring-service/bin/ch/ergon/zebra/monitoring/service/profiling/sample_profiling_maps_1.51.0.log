@@ -1,0 +1,99 @@
+@RELATION UseCaseProfiler
+@ATTRIBUTE useCaseId {doLogin,kostenstellenWechsel,pepDetailAnsicht-mainForm:speichern,pepDetailAnsicht-mainForm:insertZeitart,pepDetailAnsicht-mainForm:deleteGeplanteZeit,pepDetailAnsicht-mainForm:clickMitarbeiter,zeDetailAnsicht-mainForm:saveButton,pageReload-pepWochenAnsicht,pageReload-pepTagesAnsicht,pageReload-pepAbsenzenplanung,pageReload-pepSchichtplanung,pageReload-zeWochenAnsicht,pageReload-zeDetailAnsicht,index-focusDateChange,pepWochenAnsicht-focusDateChange,pepDetailAnsicht-focusDateChange,pepTagesAnsicht-focusDateChange,pepAbsenzenplanung-focusDateChange,pepSchichtplanung-focusDateChange,zeWochenAnsicht-focusDateChange,zeDetailAnsicht-focusDateChange,zeBewilligung-focusDateChange,zeStempelAnsicht-focusDateChange,zeManuelleBuchung-focusDateChange,zeStempelModification-focusDateChange,uebersichtPeriodenabschluss-focusDateChange,pepMutterschaft-focusDateChange,pepElternurlaub-focusDateChange,CopyTagesDatenOnWochenplan,InsertAbsenz,DeleteTagesdatenOnAbsenzplanung,InsertAbsenzPeriodically,CopyTagesdatenOnSchichtplanung,DeleteTagesdatenOnSchichtplanung,InsertSchicht,InsertSchichtPeriodically,InsertAbsenzOnSchichtplanung,InsertAbsenzPeriodicallyOnSchichtplanung,mitarbeiterZuteilen,initialPageLoad-index,initialPageLoad-pepWochenAnsicht,initialPageLoad-pepAbsenzenplanung,initialPageLoad-pepTagesAnsicht,initialPageLoad-pepDetailAnsicht,initialPageLoad-pepSchichtplanung,initialPageLoad-zeWochenAnsicht,initialPageLoad-zeDetailAnsicht,initialPageLoad-zeBewilligung,initialPageLoad-zeStempelAnsicht,initialPageLoad-zeManuelleBuchung,initialPageLoad-zeStempelModification,initialPageLoad-periodenabschlussMandant,initialPageLoad-periodenabschluss,initialPageLoad-uebersichtPeriodenabschluss,initialPageLoad-springerAbgeben,initialPageLoad-springerAufnehmen,initialPageLoad-springerSuchen,initialPageLoad-pepMutterschaft,initialPageLoad-pepElternurlaub,tagesprognose-mainForm:saveButton1,wochenprognose-mainForm:saveButton1,abwesenheitAnalyse-ajaxForm:show,abwesenheitAnalyse-ajaxForm:saveButton1,pageReload-tagesprognose,pageReload-wochenprognose,tagesprognose-focusDateChange,wochenprognose-focusDateChange,initialPageLoad-abwesenheitAnalyse,initialPageLoad-tagesprognose,initialPageLoad-wochenprognose,initialPageLoad-tagesverteiler}
+@ATTRIBUTE serverExecutionTimeMs NUMERIC
+@ATTRIBUTE serverWaitTimeMs NUMERIC
+@ATTRIBUTE serverExecutionNoWaitTimeMs NUMERIC
+@ATTRIBUTE serverOverheadTimeMs NUMERIC
+@ATTRIBUTE requestId NUMERIC
+@ATTRIBUTE sessionId STRING
+@ATTRIBUTE sessionAgeInMinutes NUMERIC
+@ATTRIBUTE userAgent STRING
+@ATTRIBUTE host STRING
+@ATTRIBUTE clientIpAddress STRING
+@ATTRIBUTE useCaseExpectsNavigationTime string
+@ATTRIBUTE mandant {001,9001,0150,0070,0080,0060,0040,0230,9999,0030,0090,0130,0270,0280,8888,0350}
+@ATTRIBUTE loginName STRING
+@ATTRIBUTE focusDate date "dd.MM.yyyy"
+@ATTRIBUTE focusDateMinusSystemDate NUMERIC
+@ATTRIBUTE focusKstNummer STRING
+@ATTRIBUTE focusKstNrOfMitarbeiter NUMERIC
+@ATTRIBUTE nrOfAccessibleKostenstelleToday NUMERIC
+@ATTRIBUTE limitPeeNummer STRING
+@ATTRIBUTE sysdatetime date "dd.MM.yyyy HH:mm:ss"
+@ATTRIBUTE sysdate date "dd.MM.yyyy"
+@ATTRIBUTE systime date "HH:mm:ss"
+@ATTRIBUTE weekday date "EE"
+@ATTRIBUTE pageLoadsPerSecond NUMERIC
+@ATTRIBUTE zebraVersion STRING
+@ATTRIBUTE javaVersion STRING
+@ATTRIBUTE activeSessions1 NUMERIC
+@ATTRIBUTE activeSessions5 NUMERIC
+@ATTRIBUTE bwDauerMs NUMERIC
+@ATTRIBUTE bwMode {NO,YES}
+@ATTRIBUTE planungenGenerierenTage NUMERIC
+@ATTRIBUTE planungenGenerierenDauerMs NUMERIC
+@ATTRIBUTE sollGleichIstTage NUMERIC
+@ATTRIBUTE sollGleichIstDauerMs NUMERIC
+@ATTRIBUTE buchungslaufTage NUMERIC
+@ATTRIBUTE buchungslaufDauerMs NUMERIC
+@ATTRIBUTE kontolaufTage NUMERIC
+@ATTRIBUTE kontolaufDauerMs NUMERIC
+@ATTRIBUTE kontolaufIterationen NUMERIC
+@ATTRIBUTE planungenNeurechnenTage NUMERIC
+@ATTRIBUTE planungenNeurechnenDauerMs NUMERIC
+@ATTRIBUTE forcePlanungNeurechnen string
+@ATTRIBUTE zeitartRegelEnforcementAnzahl NUMERIC
+@ATTRIBUTE zeitartRegelEnforcementDauerMs NUMERIC
+@ATTRIBUTE wocheNeuRechnenAnzahl NUMERIC
+@ATTRIBUTE wocheNeuRechnenDauerMs NUMERIC
+@ATTRIBUTE zeitartNummer STRING
+@ATTRIBUTE minActionDate date "dd.MM.yyyy"
+@ATTRIBUTE maxActionDate date "dd.MM.yyyy"
+@ATTRIBUTE minActionDateMinusSystemDays NUMERIC
+@ATTRIBUTE maxActionDateMinusSystemDays NUMERIC
+@ATTRIBUTE actionDateIntevalDays NUMERIC
+@ATTRIBUTE systemCPULoad NUMERIC
+@ATTRIBUTE processCPULoad NUMERIC
+@ATTRIBUTE systemLoadAverage NUMERIC
+@ATTRIBUTE realServerTime string
+@ATTRIBUTE navigationTimeReceived string
+@ATTRIBUTE navigationStart NUMERIC
+@ATTRIBUTE unloadEventStart NUMERIC
+@ATTRIBUTE unloadEventEnd NUMERIC
+@ATTRIBUTE unloadEventDuration NUMERIC
+@ATTRIBUTE redirectStart NUMERIC
+@ATTRIBUTE redirectEnd NUMERIC
+@ATTRIBUTE redirectDuration NUMERIC
+@ATTRIBUTE fetchStart NUMERIC
+@ATTRIBUTE domainLookupStart NUMERIC
+@ATTRIBUTE domainLookupEnd NUMERIC
+@ATTRIBUTE domainLookupDuration NUMERIC
+@ATTRIBUTE connectStart NUMERIC
+@ATTRIBUTE connectEnd NUMERIC
+@ATTRIBUTE connectDuration NUMERIC
+@ATTRIBUTE requestStart NUMERIC
+@ATTRIBUTE responseStart NUMERIC
+@ATTRIBUTE responseEnd NUMERIC
+@ATTRIBUTE responseDuration NUMERIC
+@ATTRIBUTE requestToResonseDuration NUMERIC
+@ATTRIBUTE domLoading NUMERIC
+@ATTRIBUTE domInteractive NUMERIC
+@ATTRIBUTE domContentLoadedEventStart NUMERIC
+@ATTRIBUTE domContentLoadedEventEnd NUMERIC
+@ATTRIBUTE domContentLoadedEvent NUMERIC
+@ATTRIBUTE domCompleteDuration NUMERIC
+@ATTRIBUTE loadEventStart NUMERIC
+@ATTRIBUTE loadEventEnd NUMERIC
+@ATTRIBUTE loadEventDuration NUMERIC
+@ATTRIBUTE latencyDuration NUMERIC
+@ATTRIBUTE pageLoadDuration NUMERIC
+@ATTRIBUTE totalTimeDuration NUMERIC
+@ATTRIBUTE msFirstPaint NUMERIC
+@ATTRIBUTE msFirstPaintFromNavigationStartDuationMs NUMERIC
+@ATTRIBUTE msFirstPaintUntilLoadEventEndDurationMs NUMERIC
+@ATTRIBUTE type STRING
+@ATTRIBUTE redirectCount NUMERIC
+%useCaseId,serverExecutionTimeMs,serverWaitTimeMs,serverExecutionNoWaitTimeMs,serverOverheadTimeMs,requestId,sessionId,sessionAgeInMinutes,userAgent,host,clientIpAddress,useCaseExpectsNavigationTime,mandant,loginName,focusDate,focusDateMinusSystemDate,focusKstNummer,focusKstNrOfMitarbeiter,nrOfAccessibleKostenstelleToday,limitPeeNummer,sysdatetime,sysdate,systime,weekday,pageLoadsPerSecond,zebraVersion,javaVersion,activeSessions1,activeSessions5,bwDauerMs,bwMode,planungenGenerierenTage,planungenGenerierenDauerMs,sollGleichIstTage,sollGleichIstDauerMs,buchungslaufTage,buchungslaufDauerMs,kontolaufTage,kontolaufDauerMs,kontolaufIterationen,planungenNeurechnenTage,planungenNeurechnenDauerMs,forcePlanungNeurechnen,zeitartRegelEnforcementAnzahl,zeitartRegelEnforcementDauerMs,wocheNeuRechnenAnzahl,wocheNeuRechnenDauerMs,zeitartNummer,minActionDate,maxActionDate,minActionDateMinusSystemDays,maxActionDateMinusSystemDays,actionDateIntevalDays,systemCPULoad,processCPULoad,systemLoadAverage,realServerTime,navigationTimeReceived,navigationStart,unloadEventStart,unloadEventEnd,unloadEventDuration,redirectStart,redirectEnd,redirectDuration,fetchStart,domainLookupStart,domainLookupEnd,domainLookupDuration,connectStart,connectEnd,connectDuration,requestStart,responseStart,responseEnd,responseDuration,requestToResonseDuration,domLoading,domInteractive,domContentLoadedEventStart,domContentLoadedEventEnd,domContentLoadedEvent,domCompleteDuration,loadEventStart,loadEventEnd,loadEventDuration,latencyDuration,pageLoadDuration,totalTimeDuration,msFirstPaint,msFirstPaintFromNavigationStartDuationMs,msFirstPaintUntilLoadEventEndDurationMs,type,redirectCount
+
+@DATA
+doLogin,2018,0,2018,1,2,'59B6C5BE9BD9E5481F260D3D91066449',0,'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)','maps-q1.gmsap.migros.ch:8080','10.12.8.140',false,0150,'benderur','19.03.2015',0,'0000000067',58,602,?,'19.03.2015 15:55:53','19.03.2015','15:55:53','Do',0.0,'1.51.0 / 1.8.0','pap6470sr6fp1-20140108_01 (SR6 FP1)',0,0,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0.035,0.496,?,true,false,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?

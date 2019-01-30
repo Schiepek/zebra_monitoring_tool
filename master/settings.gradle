@@ -1,0 +1,6 @@
+includeFlat 'monitoring-scripts'
+includeFlat 'monitoring-arff'
+includeFlat 'monitoring-data'
+includeFlat 'monitoring-service'
+includeFlat 'monitoring-importer'
+includeFlat 'monitoring-elasticsearch'

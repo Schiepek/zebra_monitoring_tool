@@ -1,0 +1,6 @@
+@RELATION CpuUsage
+@ATTRIBUTE sysdatetime date "dd.MM.yyyy HH:mm:ss"
+@ATTRIBUTE cpuUsage numeric
+
+@DATA
+'12.03.2015 10:09:46',13.5

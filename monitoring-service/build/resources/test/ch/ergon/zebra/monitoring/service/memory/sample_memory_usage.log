@@ -1,0 +1,7 @@
+@RELATION MemoryUsage
+@ATTRIBUTE sysdatetime date "dd.MM.yyyy HH:mm:ss"
+@ATTRIBUTE totalHeap numeric
+@ATTRIBUTE freeHeap numeric
+
+@DATA
+'15.03.2015 10:09:46',12800,4000

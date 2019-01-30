@@ -1,0 +1,84 @@
+buildscript {
+	ext {
+		// Define symbolic dependency versions.
+		versions = [
+			commonsDbUtils: '1.6',
+			commonsLang: '3.3.2',
+			commonsCli: '1.2',
+			commonsIo: '2.4',
+			elasticsearch: '1.5.2',
+			flyway: '3.2',
+			guava: '18.0',
+			h2: '1.4.187',
+			hamcrest: '1.3',
+			hidetakeSsh: '1.1.3',
+			hikari: '2.3.2',
+			jdom: '2.0.6',
+			jsonSimple: '1.1.1',
+			junit: '4.11',
+			logback: '1.1.2',
+			mockito: '2.0.2-beta',
+			oracle: '11.2.0.4.0',
+			// When updating the querydsl version you also need to update the version
+			// in the following file: /master/buildSrc/build.gradle
+			querydsl: '3.6.1',
+			weka: '3.7.12'
+		]
+
+		// Define symbolic names for dependencies.
+		libs = [
+			commonsDbUtils: "commons-dbutils:commons-dbutils:${versions.commonsDbUtils}",
+			commonsLang: "org.apache.commons:commons-lang3:${versions.commonsLang}",
+			commonsCli: "commons-cli:commons-cli:${versions.commonsCli}",
+			commonsIo: "commons-io:commons-io:${versions.commonsIo}",
+			elasticsearch: "org.elasticsearch:elasticsearch:${versions.elasticsearch}",
+			flyway: "org.flywaydb:flyway-gradle-plugin:${versions.flyway}",
+			guava: "com.google.guava:guava:${versions.guava}",
+			h2: "com.h2database:h2:${versions.h2}",
+			hikari: "com.zaxxer:HikariCP:${versions.hikari}",
+			hidetakeSsh: "org.hidetake:gradle-ssh-plugin:${versions.hidetakeSsh}",
+			jdom: "org.jdom:jdom2:${versions.jdom}",
+			jsonSimple: "com.googlecode.json-simple:json-simple:${versions.jsonSimple}",
+			junit: "junit:junit:${versions.junit}",
+			logback: "ch.qos.logback:logback-classic:${versions.logback}",
+			mockito: "org.mockito:mockito-all:${versions.mockito}",
+			oracle: "oracle:ojdbc6:${versions.oracle}",
+			guava: "com.google.guava:guava:${versions.guava}",
+			hamcrest: "org.hamcrest:hamcrest-all:${versions.hamcrest}",
+			querydslSql: "com.mysema.querydsl:querydsl-sql:${versions.querydsl}",
+			querydslSqlCodegen: "com.mysema.querydsl:querydsl-sql-codegen:${versions.querydsl}",
+			weka: "nz.ac.waikato.cms.weka:weka-dev:${versions.weka}",
+			xdb6: "oracle:xdb6:${versions.oracle}"
+		]
+
+
+		repos = {
+			flatDir { dirs "${rootProject.projectDir}/libs" }
+			maven { url 'http://nexus.ergon.ch/content/groups/public' }
+			maven { url 'http://nexus.ergon.ch/content/groups/public-snapshots/' }
+		}
+	}
+
+	dependencies {
+		classpath libs.hidetakeSsh
+	}
+
+	repositories ext.repos
+}
+
+apply from: "$rootDir/version.gradle"
+
+// Method is defined in version.gradle
+def calculatedVersion = calculateVersion();
+logger.quiet "Build version: $calculatedVersion"
+
+allprojects {
+	group = 'ch.ergon.zebra.monitoring'
+	version = calculatedVersion;
+
+	repositories repos
+}
+
+// Needed for switching to a different wrapper version
+task wrapper(type: Wrapper) { gradleVersion = '2.4' }
+

@@ -1,0 +1,10 @@
+apply from: "$rootDir/java.gradle"
+
+dependencies {
+	compile libs.commonsIo
+	compile libs.guava
+	compile libs.mockito
+	compile libs.weka
+	compile project(':monitoring-data')
+}
+

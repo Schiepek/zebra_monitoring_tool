@@ -1,0 +1,27 @@
+apply plugin: 'org.hidetake.ssh'
+
+remotes {
+	chi {
+		host = 'chi.ergon.ch'
+		user = 'zebra'
+		password = System.properties.password
+		knownHosts = allowAnyHosts
+	}
+}
+
+ext.uploadToChi = {localName, remoteName ->
+	def remotePath = '/opt/zebra/monitoring'
+
+	println "Uploading $localName to chi.ergon.ch..."
+	println "Remote path: $remotePath"
+
+	ssh.run {
+		session(remotes.chi) {
+			execute "rm -f $remotePath/$remoteName"
+			put from: "$project.buildDir/libs/$localName", into: "$remotePath/$remoteName"
+		}
+	}
+
+	println 'Upload ended successfully'
+	println ''
+}

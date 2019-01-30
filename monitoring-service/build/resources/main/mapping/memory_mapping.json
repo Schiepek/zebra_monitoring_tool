@@ -1,0 +1,20 @@
+{
+    "memory_usage" : {
+        "properties" : {         	
+			"id" : {
+            	"type" : "integer",
+				"index" : "not_analyzed"
+			},
+			"sysDatetime" : {
+            	"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"totalHeap" : {
+            	"type" : "double"
+			},
+			"usedHeap" : {
+            	"type" : "double"
+			}
+        }
+    }
+}

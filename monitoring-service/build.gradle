@@ -1,0 +1,23 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+apply from: "$rootDir/java.gradle"
+
+dependencies {
+	compile libs.elasticsearch
+	compile libs.guava	
+	compile libs.jdom
+	compile libs.jsonSimple
+	compile libs.mockito
+	compile libs.weka
+	compile project(':monitoring-data')
+	compile project(':monitoring-arff')
+}
+
+processResources {
+	filter ReplaceTokens, tokens:[version: version, timestamp: buildTime()]
+}
+
+def buildTime() {
+	def date = new Date()
+	return date.format('yyyyMMdd-HH:mm:ss')
+}

@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+provider: gradle
+Main-Class: ch.ergon.zebra.monitoring.elasticsearch.importer.Elasticse
+ archImporter
+

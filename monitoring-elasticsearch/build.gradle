@@ -1,0 +1,27 @@
+plugins { id "com.github.johnrengelman.shadow" version "1.2.1" }
+
+apply from: "$rootDir/java.gradle"
+apply from: "$rootDir/ssh.gradle"
+
+dependencies {
+	compile libs.commonsCli
+	compile libs.elasticsearch
+	compile project(':monitoring-service')
+}
+
+shadowJar {
+	baseName = 'monitoring-elasticsearch'
+	manifest { attributes 'Main-Class': 'ch.ergon.zebra.monitoring.elasticsearch.importer.ElasticsearchImporter' }
+}
+
+build.doLast {
+	tasks.shadowJar.execute()
+}
+
+// Usage: gradlew deploy -Dpassword=<password of zebra user>
+task deploy << {
+	def localName = "monitoring-elasticsearch-$version-all.jar"
+	def remoteName = 'monitoring-elasticsearch.jar'
+
+	uploadToChi(localName, remoteName)
+}

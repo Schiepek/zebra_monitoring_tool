@@ -1,0 +1,11 @@
+<config>
+	<client>Migros</client>
+    <environment>qual</environment>
+	<database>
+		<jdbcUrl>jdbc:oracle:thin:@cavos.ergon.ch:1521:CAVOS</jdbcUrl>
+		<jdbcDriver>oracle.jdbc.driver.OracleDriver</jdbcDriver>
+		<username>ZEBRA_M_1</username>
+		<password>password</password>
+	</database>
+	<importer name="profiling" pending="C:\Workspace\monitoring-test\data\maps\profiling\pending" done="C:\Workspace\monitoring-test\data\maps\profiling\done"/>
+</config>

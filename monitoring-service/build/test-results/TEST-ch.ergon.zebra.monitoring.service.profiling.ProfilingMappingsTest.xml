@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ch.ergon.zebra.monitoring.service.profiling.ProfilingMappingsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2015-05-29T08:09:32" hostname="SESA" time="0.033">
+  <properties/>
+  <testcase name="testCreateProfiling_maps_1_51_0" classname="ch.ergon.zebra.monitoring.service.profiling.ProfilingMappingsTest" time="0.025"/>
+  <testcase name="testCreateProfilingWidthNonExistingAttribute" classname="ch.ergon.zebra.monitoring.service.profiling.ProfilingMappingsTest" time="0.0"/>
+  <testcase name="testCreateProfiling_jazz_2_3_17" classname="ch.ergon.zebra.monitoring.service.profiling.ProfilingMappingsTest" time="0.0"/>
+  <testcase name="testCreateProfiling_jazz_2_4_14" classname="ch.ergon.zebra.monitoring.service.profiling.ProfilingMappingsTest" time="0.001"/>
+  <testcase name="testCreateProfiling_jazz_2_2_9" classname="ch.ergon.zebra.monitoring.service.profiling.ProfilingMappingsTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
